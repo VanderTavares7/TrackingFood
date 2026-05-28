@@ -461,16 +461,30 @@ function closeModalOutside(e) {
 
 function closeModalDirect() {
   const overlay = document.getElementById("modal-overlay");
+
   if (!overlay.classList.contains("open")) return;
+
+  /* PARA O VÍDEO */
+  stopVideoPlayback();
+
   overlay.classList.remove("open");
+
   document.body.style.overflow = "";
-  if (history.state && history.state.modal) history.back();
+
+  if (history.state && history.state.modal) {
+    history.back();
+  }
 }
 
 window.addEventListener("popstate", () => {
   const overlay = document.getElementById("modal-overlay");
+
   if (overlay.classList.contains("open")) {
+    /* PARA O VÍDEO */
+    stopVideoPlayback();
+
     overlay.classList.remove("open");
+
     document.body.style.overflow = "";
   }
 });
@@ -483,14 +497,27 @@ function toggleBoxing(key) {
 
   if (openBoxings.has(key)) {
     el.classList.remove("open");
+
     openBoxings.delete(key);
+
+    /* se fechou o preparo → para vídeo */
+    if (key === "preparo") {
+      stopVideoPlayback();
+    }
   } else {
     el.classList.add("open");
+
     openBoxings.add(key);
+
     setTimeout(() => {
       const scroll = document.getElementById("modal-scroll");
+
       const boxTop = el.offsetTop - scroll.offsetTop;
-      scroll.scrollTo({ top: boxTop - 12, behavior: "smooth" });
+
+      scroll.scrollTo({
+        top: boxTop - 12,
+        behavior: "smooth",
+      });
     }, 300);
   }
 }
@@ -536,28 +563,33 @@ function resetVideoSlot(videoUrl) {
         <!-- CONTROLES -->
         <div class="video-controls">
 
-          <button class="bottom-play-btn" id="bottom-play-btn">
-            ▶
-          </button>
+  <button class="bottom-play-btn" id="bottom-play-btn">
+    ▶
+  </button>
 
-          <span class="video-time" id="video-current">
-            0:00
-          </span>
+  <span class="video-time" id="video-current">
+    0:00
+  </span>
 
-          <input
-            type="range"
-            class="video-progress"
-            id="video-progress"
-            min="0"
-            max="100"
-            value="0"
-          >
+  <input
+    type="range"
+    class="video-progress"
+    id="video-progress"
+    min="0"
+    max="100"
+    value="0"
+  >
 
-          <span class="video-time" id="video-duration">
-            0:00
-          </span>
+  <span class="video-time" id="video-duration">
+    0:00
+  </span>
 
-        </div>
+  <!-- FULLSCREEN -->
+  <button class="fullscreen-btn" id="fullscreen-btn">
+    ⛶
+  </button>
+
+</div>
 
       </div>
     `;
@@ -573,6 +605,8 @@ function resetVideoSlot(videoUrl) {
     const current = document.getElementById("video-current");
 
     const duration = document.getElementById("video-duration");
+
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
 
     function formatTime(time) {
       const mins = Math.floor(time / 60);
@@ -627,6 +661,21 @@ function resetVideoSlot(videoUrl) {
 
     progress.addEventListener("input", () => {
       video.currentTime = (progress.value / 100) * video.duration;
+    });
+
+    /* FULLSCREEN */
+
+    fullscreenBtn.addEventListener("click", async () => {
+      try {
+        if (video.requestFullscreen) {
+          await video.requestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          /* iPhone Safari */
+          video.webkitEnterFullscreen();
+        }
+      } catch (err) {
+        console.log(err);
+      }
     });
 
     video.addEventListener("ended", () => {
@@ -864,3 +913,31 @@ function toggleVoiceSearch() {
    INICIALIZA
 ═══════════════════════════════════════ */
 initVoiceSearch();
+
+function stopVideoPlayback() {
+  const video = document.getElementById("tutorial-video");
+
+  const centerBtn = document.getElementById("custom-play-btn");
+
+  const bottomBtn = document.getElementById("bottom-play-btn");
+
+  const progress = document.getElementById("video-progress");
+
+  if (!video) return;
+
+  video.pause();
+
+  video.currentTime = 0;
+
+  if (progress) {
+    progress.value = 0;
+  }
+
+  if (centerBtn) {
+    centerBtn.classList.remove("hide");
+  }
+
+  if (bottomBtn) {
+    bottomBtn.innerHTML = "▶";
+  }
+}
