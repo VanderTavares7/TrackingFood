@@ -124,104 +124,83 @@ const DATA = {
     },
     {
       id: 3,
-      name: "Coxinha de Frango",
-      desc: "Recheio generoso, massa fininha. Direto do freezer para a fritadeira.",
-      img: null,
-      emoji: "🍗",
+      name: "Linha Origem",
+      desc: "Pão artesanal com grãos selecionados. Sabor e textura únicos.",
+      img: IMG_LINHA_ORIGEM,
+      emoji: "🌾",
       ficha: {
         preparo: {
           videoUrl: "",
           steps: [
-            "Retire do freezer e deixe descongelar por 15 minutos.",
-            "Aqueça o óleo em panela funda a 180 °C (teste com um palito — deve borbulhar).",
-            "Frite 4 a 5 coxinhas por vez para não baixar a temperatura do óleo.",
-            "Frite por 5 a 7 minutos, virando suavemente na metade do tempo.",
-            "Retire quando douradas. Escorra em papel toalha e sirva.",
+            "🧼 Higienizar mãos e utensílios antes de começar.",
+            "🖌️ Untar as fôrmas com desmoldante usando pincel.",
+            "🗂️ Posicionar os produtos congelados na assadeira com espaço entre eles.",
+            "🌡️ Fermentar conforme orientação do fabricante.",
+            "🔥 Assar em forno pré-aquecido conforme especificação do produto.",
+            "🧺 Retirar do forno e aguardar resfriar antes de embalar.",
           ],
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer", value: "Até 60 dias" },
-            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem", value: "Bandeja + filme" },
-            { icon: "⏰", label: "Após fritar", value: "Consumir imediato" },
+            { icon: "🧊", label: "Congelado", value: "A preencher" },
+            { icon: "🌡️", label: "Temperatura", value: "A preencher" },
+            { icon: "🚚", label: "Transporte", value: "A preencher" },
+            { icon: "🍞", label: "Após forneamento", value: "A preencher" },
           ],
-          note: "⚠️ Produto pré-frito. Não recongele. Óleo a 180 °C garante textura crocante sem absorção excessiva.",
+          note: "⚠️ Informações a serem preenchidas conforme especificação técnica do produto.",
         },
         ingredientes: {
-          items: [
-            { name: "Frango desfiado", qty: "35%" },
-            { name: "Farinha de trigo", qty: "28%" },
-            { name: "Batata cozida", qty: "12%" },
-            { name: "Caldo de frango", qty: "10%" },
-            { name: "Requeijão", qty: "8%" },
-            { name: "Temperos naturais", qty: "4%" },
-            { name: "Sal e pimenta", qty: "3%" },
-          ],
-          allergens: [
-            "Glúten (trigo)",
-            "Lactose (requeijão)",
-            "Pode conter soja",
-          ],
+          items: [{ name: "A preencher", qty: "" }],
+          allergens: ["A preencher"],
         },
         caracteristicas: [
-          { label: "Peso líquido", value: "60 g / unidade" },
-          { label: "Unidades / pacote", value: "10 unidades" },
-          { label: "Rendimento", value: "10 porções" },
-          { label: "Tempo de preparo", value: "5 – 7 min" },
-          { label: "Método", value: "Fritadeira / Airfryer" },
-          { label: "Formato", value: "Gota tradicional" },
+          { label: "Peso assado", value: "A preencher" },
+          { label: "Rendimento", value: "A preencher" },
+          { label: "Tempo de preparo", value: "A preencher" },
+          { label: "Tipo de forno", value: "A preencher" },
+          { label: "Público alvo", value: "A preencher" },
+          { label: "Origem", value: "A preencher" },
         ],
       },
     },
     {
       id: 4,
-      name: "Quibe Assado",
-      desc: "Temperado na hora, congelado no ponto certo.",
-      img: null,
-      emoji: "🥩",
+      name: "Pão para Rabanada",
+      desc: "Pão especial de casca fina, ideal para rabanadas perfeitas.",
+      img: IMG_RABANADA,
+      emoji: "🍯",
       ficha: {
         preparo: {
           videoUrl: "",
           steps: [
-            "Descongele em geladeira por 2 horas ou em temperatura ambiente por 40 minutos.",
-            "Pré-aqueça o forno a 200 °C.",
-            "Unte uma assadeira e disponha os kibes sem sobrepor.",
-            "Asse por 25 a 30 minutos, virando cuidadosamente na metade.",
-            "Sirva com limão espremido e molho de hortelã.",
+            "🧼 Higienizar mãos e utensílios antes de começar.",
+            "🖌️ Untar as fôrmas com desmoldante usando pincel.",
+            "🗂️ Posicionar os produtos congelados na assadeira com espaço entre eles.",
+            "🌡️ Fermentar conforme orientação do fabricante.",
+            "🔥 Assar em forno pré-aquecido conforme especificação do produto.",
+            "🧺 Retirar do forno e aguardar resfriar antes de embalar.",
           ],
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer", value: "Até 45 dias" },
-            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem", value: "Bandeja lacrada" },
-            { icon: "⏰", label: "Após assar", value: "Consumir em 2 h" },
+            { icon: "🧊", label: "Congelado", value: "A preencher" },
+            { icon: "🌡️", label: "Temperatura", value: "A preencher" },
+            { icon: "🚚", label: "Transporte", value: "A preencher" },
+            { icon: "🍞", label: "Após forneamento", value: "A preencher" },
           ],
-          note: "⚠️ Produto cru. Certifique-se de atingir temperatura interna de 75 °C antes de servir.",
+          note: "⚠️ Informações a serem preenchidas conforme especificação técnica do produto.",
         },
         ingredientes: {
-          items: [
-            { name: "Carne bovina moída", qty: "50%" },
-            { name: "Trigo para quibe", qty: "25%" },
-            { name: "Cebola", qty: "10%" },
-            { name: "Hortelã fresca", qty: "6%" },
-            { name: "Alho", qty: "4%" },
-            { name: "Sal e pimenta-preta", qty: "3%" },
-            { name: "Azeite de oliva", qty: "2%" },
-          ],
-          allergens: [
-            "Glúten (trigo para quibe)",
-            "Pode conter traços de leite",
-          ],
+          items: [{ name: "A preencher", qty: "" }],
+          allergens: ["A preencher"],
         },
         caracteristicas: [
-          { label: "Peso líquido", value: "80 g / unidade" },
-          { label: "Unidades / pacote", value: "8 unidades" },
-          { label: "Rendimento", value: "8 porções" },
-          { label: "Tempo de preparo", value: "25 – 30 min" },
-          { label: "Tipo de forno", value: "Convencional" },
-          { label: "Origem", value: "Receita árabe" },
+          { label: "Peso assado", value: "A preencher" },
+          { label: "Rendimento", value: "A preencher" },
+          { label: "Tempo de preparo", value: "A preencher" },
+          { label: "Tipo de forno", value: "A preencher" },
+          { label: "Público alvo", value: "A preencher" },
+          { label: "Origem", value: "A preencher" },
         ],
       },
     },
@@ -230,144 +209,41 @@ const DATA = {
   doces: [
     {
       id: 5,
-      name: "Pudim de Leite",
-      desc: "Cremoso, com calda de caramelo artesanal.",
-      img: null,
-      emoji: "🍮",
-      ficha: {
-        preparo: {
-          videoUrl: "",
-          steps: [
-            "Retire do freezer e descongele em geladeira por 8 horas (ou de um dia para o outro).",
-            "Quando totalmente descongelado, passe uma faca nas bordas da forma.",
-            "Vire sobre um prato fundo — a calda vai escorrer naturalmente.",
-            "Sirva gelado. Se preferir, decore com chantili ou frutas vermelhas.",
-          ],
-        },
-        armazenamento: {
-          cards: [
-            { icon: "🧊", label: "Freezer", value: "Até 30 dias" },
-            { icon: "❄️", label: "Geladeira", value: "Até 3 dias" },
-            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem", value: "Forma com tampa" },
-          ],
-          note: "💡 Após descongelar, conserve na geladeira e consuma em até 3 dias. Não volte ao freezer.",
-        },
-        ingredientes: {
-          items: [
-            { name: "Leite condensado", qty: "40%" },
-            { name: "Creme de leite", qty: "25%" },
-            { name: "Ovos inteiros", qty: "20%" },
-            { name: "Açúcar (caramelo)", qty: "10%" },
-            { name: "Baunilha natural", qty: "5%" },
-          ],
-          allergens: ["Lactose (leite condensado, creme)", "Ovos"],
-        },
-        caracteristicas: [
-          { label: "Peso líquido", value: "450 g / unidade" },
-          { label: "Rendimento", value: "6 porções" },
-          { label: "Textura", value: "Cremosa e firme" },
-          { label: "Serviço", value: "Gelado" },
-          { label: "Descongelamento", value: "8 h na geladeira" },
-          { label: "Ocasião", value: "Sobremesa / Festa" },
-        ],
-      },
-    },
-    {
-      id: 6,
-      name: "Bolo de Cenoura",
-      desc: "Fofinho por dentro, cobertura de chocolate generosa.",
-      img: null,
-      emoji: "🍰",
-      ficha: {
-        preparo: {
-          videoUrl: "",
-          steps: [
-            "Retire do freezer e descongele em geladeira por 4 horas.",
-            "Para servir em temperatura ambiente, retire da geladeira 30 minutos antes.",
-            "Se desejar aquecer, leve ao micro-ondas por 30 segundos na potência média.",
-            "Corte em fatias e sirva. A cobertura de chocolate faz parte da receita.",
-          ],
-        },
-        armazenamento: {
-          cards: [
-            { icon: "🧊", label: "Freezer", value: "Até 45 dias" },
-            { icon: "❄️", label: "Geladeira", value: "Até 4 dias" },
-            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem", value: "Caixa lacrada" },
-          ],
-          note: "💡 Após cortar, cubra com filme plástico para preservar a umidade e proteger a cobertura.",
-        },
-        ingredientes: {
-          items: [
-            { name: "Cenoura", qty: "28%" },
-            { name: "Farinha de trigo", qty: "25%" },
-            { name: "Açúcar", qty: "18%" },
-            { name: "Ovos", qty: "12%" },
-            { name: "Óleo de soja", qty: "10%" },
-            { name: "Chocolate em pó", qty: "5%" },
-            { name: "Fermento em pó", qty: "2%" },
-          ],
-          allergens: [
-            "Glúten (trigo)",
-            "Ovos",
-            "Pode conter traços de leite e soja",
-          ],
-        },
-        caracteristicas: [
-          { label: "Peso líquido", value: "700 g / bolo" },
-          { label: "Rendimento", value: "10 fatias" },
-          { label: "Textura", value: "Fofo e úmido" },
-          { label: "Cobertura", value: "Ganache de chocolate" },
-          { label: "Descongelamento", value: "4 h na geladeira" },
-          { label: "Ocasião", value: "Lanche / Festa" },
-        ],
-      },
-    },
-    {
-      id: 7,
-      name: "Sonho Recheado",
-      desc: "Massa aerada, recheio de creme de baunilha.",
-      img: null,
+      name: "Sonho",
+      desc: "Massa macia e aerada, recheada e irresistível.",
+      img: IMG_SONHO,
       emoji: "🍩",
       ficha: {
         preparo: {
           videoUrl: "",
           steps: [
-            "Retire do freezer e descongele em temperatura ambiente por 45 minutos.",
-            "Para aquecer, leve ao forno a 160 °C por 8 minutos.",
-            "Não frite novamente — a massa já está completamente assada.",
-            "Sirva imediatamente após aquecer, polvilhado com açúcar de confeiteiro.",
+            "🧼 Higienizar mãos e utensílios antes de começar.",
+            "❄️ Retire do freezer e descongele conforme orientação.",
+            "🌡️ Fermentar conforme especificação do produto.",
+            "🔥 Fritar ou assar conforme indicação do fabricante.",
+            "⏱️ Aguardar resfriar levemente antes de rechear ou servir.",
           ],
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer", value: "Até 30 dias" },
-            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem", value: "Bandeja individual" },
-            { icon: "⏰", label: "Após descongelar", value: "Consumir no dia" },
+            { icon: "🧊", label: "Congelado", value: "A preencher" },
+            { icon: "🌡️", label: "Temperatura", value: "A preencher" },
+            { icon: "📦", label: "Embalagem", value: "A preencher" },
+            { icon: "⏰", label: "Após preparo", value: "A preencher" },
           ],
-          note: "⚠️ O recheio de creme é sensível ao calor. Aqueça somente no forno convencional — nunca no micro-ondas.",
+          note: "⚠️ Informações a serem preenchidas conforme especificação técnica do produto.",
         },
         ingredientes: {
-          items: [
-            { name: "Farinha de trigo", qty: "30%" },
-            { name: "Leite integral", qty: "22%" },
-            { name: "Ovos", qty: "15%" },
-            { name: "Açúcar", qty: "14%" },
-            { name: "Manteiga", qty: "10%" },
-            { name: "Creme de baunilha", qty: "7%" },
-            { name: "Fermento biológico", qty: "2%" },
-          ],
-          allergens: ["Glúten (trigo)", "Lactose (leite, manteiga)", "Ovos"],
+          items: [{ name: "A preencher", qty: "" }],
+          allergens: ["A preencher"],
         },
         caracteristicas: [
-          { label: "Peso líquido", value: "70 g / unidade" },
-          { label: "Unidades / pacote", value: "6 unidades" },
-          { label: "Rendimento", value: "6 porções" },
-          { label: "Recheio", value: "Creme de baunilha" },
-          { label: "Tempo de preparo", value: "45 min + 8 min forno" },
-          { label: "Ocasião", value: "Lanche / Café da manhã" },
+          { label: "Peso líquido", value: "A preencher" },
+          { label: "Unidades / pacote", value: "A preencher" },
+          { label: "Rendimento", value: "A preencher" },
+          { label: "Recheio", value: "A preencher" },
+          { label: "Tempo de preparo", value: "A preencher" },
+          { label: "Ocasião", value: "A preencher" },
         ],
       },
     },
@@ -376,14 +252,12 @@ const DATA = {
 
 /* ═══════════════════════════════════════
    UTILITÁRIO DE BUSCA
-   Remove acentos e normaliza para minúsculas,
-   garantindo busca 100% flexível.
 ═══════════════════════════════════════ */
 function normalize(str) {
   return str
     .toLowerCase()
-    .normalize("NFD") // decompõe caracteres acentuados
-    .replace(/[\u0300-\u036f]/g, ""); // remove os diacríticos (acentos)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
 /* ═══════════════════════════════════════
@@ -438,7 +312,6 @@ function filterProducts() {
     return;
   }
 
-  // Compara nome e descrição normalizados com o termo normalizado
   const filtered = all.filter(
     (p) => normalize(p.name).includes(q) || normalize(p.desc).includes(q),
   );
@@ -506,26 +379,21 @@ function openModal(id) {
 
   document.getElementById("preparo-steps").innerHTML = p.ficha.preparo.steps
     .map((s) => {
-      const isObj = typeof s === "object" && s !== null;
-      const text = isObj ? s.text : s;
-      const iconHtml = isObj ? s.icon : "";
       const isDestaque =
-        text.startsWith("MEIA CARGA") || text.startsWith("CARGA COMPLETA");
+        s.includes("MEIA CARGA") || s.includes("CARGA COMPLETA");
       const cls = isDestaque ? " step-destaque" : "";
-      const left = isObj ? `<span class="step-icon">${iconHtml}</span>` : "";
-      return `<li class="step-item${cls}">${left}<span class="step-text">${text}</span></li>`;
+      return `<li class="step-item${cls}"><span class="step-text">${s}</span></li>`;
     })
     .join("");
 
   document.getElementById("storage-grid").innerHTML =
     p.ficha.armazenamento.cards
       .map(
-        (c) =>
-          `<div class="storage-card">
-            <div class="storage-card-icon">${c.icon}</div>
-            <div class="storage-card-label">${c.label}</div>
-            <div class="storage-card-value">${c.value}</div>
-          </div>`,
+        (c) => `<div class="storage-card">
+        <div class="storage-card-icon">${c.icon}</div>
+        <div class="storage-card-label">${c.label}</div>
+        <div class="storage-card-value">${c.value}</div>
+      </div>`,
       )
       .join("");
   document.getElementById("storage-note").textContent =
@@ -534,11 +402,10 @@ function openModal(id) {
   document.getElementById("ingredients-list").innerHTML =
     p.ficha.ingredientes.items
       .map(
-        (item) =>
-          `<li class="ingredient-item">
-            <span class="ingredient-name">${item.name}</span>
-            <span class="ingredient-qty">${item.qty}</span>
-          </li>`,
+        (item) => `<li class="ingredient-item">
+        <span class="ingredient-name">${item.name}</span>
+        <span class="ingredient-qty">${item.qty}</span>
+      </li>`,
       )
       .join("");
   document.getElementById("allergens-wrap").innerHTML =
@@ -548,11 +415,10 @@ function openModal(id) {
 
   document.getElementById("chars-grid").innerHTML = p.ficha.caracteristicas
     .map(
-      (c) =>
-        `<div class="char-card">
-          <div class="char-label">${c.label}</div>
-          <div class="char-value">${c.value}</div>
-        </div>`,
+      (c) => `<div class="char-card">
+        <div class="char-label">${c.label}</div>
+        <div class="char-value">${c.value}</div>
+      </div>`,
     )
     .join("");
 
@@ -672,8 +538,8 @@ function loadVideo() {
     alert("Link inválido. Use um link do YouTube ou Vimeo.");
     return;
   }
-  const slot = document.getElementById("video-slot");
-  slot.innerHTML = `<iframe src="${embed}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById("video-slot").innerHTML =
+    `<iframe src="${embed}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
   document.getElementById("video-url-area").classList.remove("visible");
 }
 
@@ -699,3 +565,73 @@ document.addEventListener("keydown", (e) => {
 
 /* Init */
 renderProducts(DATA.salgados);
+
+/* ═══════════════════════════════════════
+   PESQUISA POR VOZ
+═══════════════════════════════════════ */
+
+let recognition;
+let isListening = false;
+
+function initVoiceSearch() {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    console.warn("Pesquisa por voz não suportada neste navegador.");
+    return;
+  }
+
+  recognition = new SpeechRecognition();
+
+  recognition.lang = "pt-BR";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  recognition.onstart = () => {
+    isListening = true;
+
+    const btn = document.getElementById("voice-btn");
+
+    if (btn) {
+      btn.classList.add("listening");
+    }
+  };
+
+  recognition.onend = () => {
+    isListening = false;
+
+    const btn = document.getElementById("voice-btn");
+
+    if (btn) {
+      btn.classList.remove("listening");
+    }
+  };
+
+  recognition.onresult = (event) => {
+    const text = event.results[0][0].transcript;
+
+    const input = document.getElementById("search-input");
+
+    input.value = text;
+
+    filterProducts();
+  };
+
+  recognition.onerror = (event) => {
+    console.error("Erro no reconhecimento de voz:", event.error);
+  };
+}
+
+function toggleVoiceSearch() {
+  if (!recognition) return;
+
+  if (isListening) {
+    recognition.stop();
+  } else {
+    recognition.start();
+  }
+}
+
+/* Inicializa voz */
+initVoiceSearch();
