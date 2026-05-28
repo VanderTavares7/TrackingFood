@@ -4,8 +4,8 @@ const DATA = {
       id: 1,
       name: "Pão Francês",
       desc: "Crocante por fora, macio por dentro. Pronto para assar.",
-      img: "PaoIcon.webp",
-      emoji: "🥖", // emoji vira fallback se imagem não carregar
+      img: IMG_PAO,
+      emoji: "🥖",
       ficha: {
         preparo: {
           videoUrl: "",
@@ -73,7 +73,7 @@ const DATA = {
       id: 2,
       name: "Pão de Queijo",
       desc: "Receita mineira original, com queijo de verdade.",
-      img: "PaoDeQueijoIcon.webp",
+      img: IMG_PAO_QUEIJO,
       emoji: "🧀",
       ficha: {
         preparo: {
@@ -552,6 +552,9 @@ function openModal(id) {
   document.getElementById("modal-scroll").scrollTop = 0;
   document.getElementById("modal-overlay").classList.add("open");
   document.body.style.overflow = "hidden";
+
+  /* Empurra estado na history → botão físico de voltar fecha o modal */
+  history.pushState({ modal: true }, "");
 }
 
 function closeModalOutside(e) {
@@ -559,9 +562,23 @@ function closeModalOutside(e) {
 }
 
 function closeModalDirect() {
-  document.getElementById("modal-overlay").classList.remove("open");
+  const overlay = document.getElementById("modal-overlay");
+  if (!overlay.classList.contains("open")) return;
+  overlay.classList.remove("open");
   document.body.style.overflow = "";
+
+  /* Remove o estado da history sem navegar para fora do site */
+  if (history.state && history.state.modal) history.back();
 }
+
+/* Botão físico de voltar do celular fecha o modal */
+window.addEventListener("popstate", () => {
+  const overlay = document.getElementById("modal-overlay");
+  if (overlay.classList.contains("open")) {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+});
 
 /* ═══════════════════════════════════════
    BOXINGS
