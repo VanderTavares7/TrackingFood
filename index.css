@@ -1097,19 +1097,51 @@ body {
 ══════════════════════════════════════════ */
 #voice-btn,
 #voice-btn-desktop {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
   border: none;
-  background: #ff7a00;
-  color: white;
-  font-size: 18px;
+  background: transparent;
+  color: #666;
   cursor: pointer;
-  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  transition: all 0.2s ease;
+}
+
+#voice-btn:hover,
+#voice-btn-desktop:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
+}
+
+#voice-btn:active,
+#voice-btn-desktop:active {
+  transform: scale(0.95);
+}
+
+#voice-btn img,
+#voice-btn-desktop img,
+#voice-btn svg,
+#voice-btn-desktop svg {
+  margin: auto;
+}
+
+#voice-btn img,
+#voice-btn-desktop img,
+#voice-btn svg,
+#voice-btn-desktop svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
 }
 
 #voice-btn:hover,

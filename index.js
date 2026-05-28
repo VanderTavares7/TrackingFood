@@ -80,47 +80,28 @@ const DATA = {
       ficha: {
         preparo: {
           videoUrl: "",
-          steps: [
-            "🧼 Higienizar mãos e utensílios antes de começar.",
-            "❄️ Não precisa descongelar! Leve direto do freezer ao forno.",
-            "🌡️ Pré-aqueça o forno a 180 °C.",
-            "🗂️ Distribua os pães de queijo em assadeira levemente untada, com 3 cm de espaço entre eles.",
-            "🔥 Asse por 20 a 25 minutos até dourar e crescer bem.",
-            "⏱️ Aguarde 3 minutos antes de servir.",
-          ],
+          steps: ["A preencher."],
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer", value: "Até 90 dias" },
-            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem", value: "Saco plástico selado" },
-            { icon: "⏰", label: "Após assar", value: "Consumir em 4 h" },
+            { icon: "🧊", label: "Congelado", value: "A preencher" },
+            { icon: "🌡️", label: "Temperatura", value: "A preencher" },
+            { icon: "📦", label: "Embalagem", value: "A preencher" },
+            { icon: "⏰", label: "Após assar", value: "A preencher" },
           ],
-          note: "⚠️ Não recongele após descongelar. Mantenha na embalagem fechada até o preparo para preservar a umidade.",
+          note: "⚠️ Informações a serem preenchidas conforme especificação técnica do produto.",
         },
         ingredientes: {
-          items: [
-            { name: "Polvilho azedo", qty: "35%" },
-            { name: "Polvilho doce", qty: "10%" },
-            { name: "Queijo meia-cura", qty: "22%" },
-            { name: "Ovos caipiras", qty: "12%" },
-            { name: "Leite integral", qty: "10%" },
-            { name: "Óleo de soja", qty: "8%" },
-            { name: "Sal refinado", qty: "3%" },
-          ],
-          allergens: [
-            "Lactose (queijo, leite)",
-            "Ovos",
-            "Pode conter traços de glúten",
-          ],
+          items: [{ name: "A preencher", qty: "" }],
+          allergens: ["A preencher"],
         },
         caracteristicas: [
-          { label: "Peso líquido", value: "30 g / unidade" },
-          { label: "Unidades / pacote", value: "15 unidades" },
-          { label: "Rendimento", value: "15 porções" },
-          { label: "Tempo de preparo", value: "20 – 25 min" },
-          { label: "Tipo de forno", value: "Convencional / Elétrico" },
-          { label: "Origem", value: "Receita mineira" },
+          { label: "Peso líquido", value: "A preencher" },
+          { label: "Unidades / pacote", value: "A preencher" },
+          { label: "Rendimento", value: "A preencher" },
+          { label: "Tempo de preparo", value: "A preencher" },
+          { label: "Tipo de forno", value: "A preencher" },
+          { label: "Origem", value: "A preencher" },
         ],
       },
     },
@@ -130,18 +111,11 @@ const DATA = {
       desc: "Pão artesanal com grãos selecionados. Sabor e textura únicos.",
       img: IMG_LINHA_ORIGEM,
       emoji: "🌾",
-      fermentacaoMin: 150,
+      fermentacaoMin: 0,
       ficha: {
         preparo: {
           videoUrl: "",
-          steps: [
-            "🧼 Higienizar mãos e utensílios antes de começar.",
-            "🖌️ Untar as fôrmas com desmoldante usando pincel.",
-            "🗂️ Posicionar os produtos congelados na assadeira com espaço entre eles.",
-            "🌡️ Fermentar conforme orientação do fabricante.",
-            "🔥 Assar em forno pré-aquecido conforme especificação do produto.",
-            "🧺 Retirar do forno e aguardar resfriar antes de embalar.",
-          ],
+          steps: ["A preencher."],
         },
         armazenamento: {
           cards: [
@@ -172,18 +146,11 @@ const DATA = {
       desc: "Pão especial de casca fina, ideal para rabanadas perfeitas.",
       img: IMG_RABANADA,
       emoji: "🍯",
-      fermentacaoMin: 150,
+      fermentacaoMin: 0,
       ficha: {
         preparo: {
           videoUrl: "",
-          steps: [
-            "🧼 Higienizar mãos e utensílios antes de começar.",
-            "🖌️ Untar as fôrmas com desmoldante usando pincel.",
-            "🗂️ Posicionar os produtos congelados na assadeira com espaço entre eles.",
-            "🌡️ Fermentar conforme orientação do fabricante.",
-            "🔥 Assar em forno pré-aquecido conforme especificação do produto.",
-            "🧺 Retirar do forno e aguardar resfriar antes de embalar.",
-          ],
+          steps: ["A preencher."],
         },
         armazenamento: {
           cards: [
@@ -221,13 +188,7 @@ const DATA = {
       ficha: {
         preparo: {
           videoUrl: "",
-          steps: [
-            "🧼 Higienizar mãos e utensílios antes de começar.",
-            "❄️ Retire do freezer e descongele conforme orientação.",
-            "🌡️ Fermentar conforme especificação do produto.",
-            "🔥 Fritar ou assar conforme indicação do fabricante.",
-            "⏱️ Aguardar resfriar levemente antes de rechear ou servir.",
-          ],
+          steps: ["A preencher."],
         },
         armazenamento: {
           cards: [
