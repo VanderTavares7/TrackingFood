@@ -254,10 +254,22 @@ const DATA = {
    UTILITÁRIO DE BUSCA
 ═══════════════════════════════════════ */
 function normalize(str) {
-  return str
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+  return (
+    str
+      .toLowerCase()
+
+      /* remove acentos */
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+
+      /* remove caracteres estranhos */
+      .replace(/[^\w\s]/gi, "")
+
+      /* remove espaços duplicados */
+      .replace(/\s+/g, " ")
+
+      .trim()
+  );
 }
 
 /* ═══════════════════════════════════════
@@ -303,7 +315,12 @@ function switchTab(tab) {
 }
 
 function filterProducts() {
-  const q = normalize(document.getElementById("search-input").value.trim());
+  const raw = document.getElementById("search-input").value.trim();
+
+  const q = normalize(raw);
+
+  const terms = q.split(" ");
+
   const all = DATA[currentTab];
 
   if (!q) {
@@ -312,18 +329,22 @@ function filterProducts() {
     return;
   }
 
-  const filtered = all.filter(
-    (p) => normalize(p.name).includes(q) || normalize(p.desc).includes(q),
-  );
+  const filtered = all.filter((p) => {
+    const name = normalize(p.name);
+    const desc = normalize(p.desc);
+
+    return terms.every((term) => name.includes(term) || desc.includes(term));
+  });
 
   if (filtered.length === 0) {
     document.getElementById("products-list").innerHTML = "";
+
     document.getElementById("empty-state").style.display = "block";
-    document.getElementById("empty-query").textContent = document
-      .getElementById("search-input")
-      .value.trim();
+
+    document.getElementById("empty-query").textContent = raw;
   } else {
     document.getElementById("empty-state").style.display = "none";
+
     renderProducts(filtered);
   }
 }
@@ -573,12 +594,37 @@ renderProducts(DATA.salgados);
 let recognition;
 let isListening = false;
 
+/* ═══════════════════════════════════════
+   NORMALIZA TEXTO
+═══════════════════════════════════════ */
+function normalize(str) {
+  return (
+    str
+      .toLowerCase()
+
+      /* remove acentos */
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+
+      /* remove caracteres especiais */
+      .replace(/[^\w\s]/gi, "")
+
+      /* remove espaços duplicados */
+      .replace(/\s+/g, " ")
+
+      .trim()
+  );
+}
+
+/* ═══════════════════════════════════════
+   INICIA RECONHECIMENTO
+═══════════════════════════════════════ */
 function initVoiceSearch() {
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!SpeechRecognition) {
-    console.warn("Pesquisa por voz não suportada neste navegador.");
+    console.warn("Pesquisa por voz não suportada.");
     return;
   }
 
@@ -587,7 +633,9 @@ function initVoiceSearch() {
   recognition.lang = "pt-BR";
   recognition.continuous = false;
   recognition.interimResults = false;
+  recognition.maxAlternatives = 5;
 
+  /* quando começa */
   recognition.onstart = () => {
     isListening = true;
 
@@ -598,6 +646,7 @@ function initVoiceSearch() {
     }
   };
 
+  /* quando termina */
   recognition.onend = () => {
     isListening = false;
 
@@ -608,10 +657,16 @@ function initVoiceSearch() {
     }
   };
 
+  /* resultado da voz */
   recognition.onresult = (event) => {
-    let text = event.results[0][0].transcript.toLowerCase().trim();
+    let text = event.results[0][0].transcript;
 
-    /* Remove palavras comuns */
+    console.log("Voz original:", text);
+
+    /* normaliza */
+    text = normalize(text);
+
+    /* remove palavras inúteis */
     const removeWords = [
       "quero",
       "pesquisar",
@@ -621,31 +676,69 @@ function initVoiceSearch() {
       "me mostra",
       "mostrar",
       "produto",
+      "produtos",
       "o",
       "a",
+      "os",
+      "as",
       "um",
       "uma",
       "de",
+      "do",
+      "da",
     ];
 
     removeWords.forEach((word) => {
-      text = text.replace(word, "");
+      const regex = new RegExp(`\\b${normalize(word)}\\b`, "g");
+
+      text = text.replace(regex, "");
     });
 
-    text = text.trim();
+    text = text.replace(/\s+/g, " ").trim();
 
+    /* correções inteligentes */
+    const corrections = {
+      "pa frances": "pao frances",
+      "pao frnces": "pao frances",
+      "pao frances": "pao frances",
+      frances: "frances",
+
+      "po de queijo": "pao de queijo",
+      "pao de queijo": "pao de queijo",
+
+      "linha origem": "linha origem",
+
+      rabanada: "rabanada",
+
+      sonho: "sonho",
+    };
+
+    Object.keys(corrections).forEach((key) => {
+      if (text.includes(key)) {
+        text = corrections[key];
+      }
+    });
+
+    console.log("Texto corrigido:", text);
+
+    /* joga no input */
     const input = document.getElementById("search-input");
 
     input.value = text;
 
+    /* executa busca */
     filterProducts();
   };
 
+  /* erro */
   recognition.onerror = (event) => {
-    console.error("Erro no reconhecimento de voz:", event.error);
+    console.error("Erro na voz:", event.error);
   };
 }
 
+/* ═══════════════════════════════════════
+   BOTÃO VOZ
+═══════════════════════════════════════ */
 function toggleVoiceSearch() {
   if (!recognition) return;
 
@@ -656,5 +749,7 @@ function toggleVoiceSearch() {
   }
 }
 
-/* Inicializa voz */
+/* ═══════════════════════════════════════
+   INICIALIZA
+═══════════════════════════════════════ */
 initVoiceSearch();
