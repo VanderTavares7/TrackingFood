@@ -8,7 +8,7 @@ const DATA = {
       emoji: "🥖",
       ficha: {
         preparo: {
-          videoUrl: "",
+          videoUrl: "TutorialPaoFrances.mp4",
           steps: [
             "🧼 Higienizar mãos e utensílios antes de começar.",
             "🖌️ Untar as fôrmas com desmoldante usando pincel.",
@@ -512,17 +512,128 @@ function toEmbedUrl(url) {
 
 function resetVideoSlot(videoUrl) {
   const slot = document.getElementById("video-slot");
-  const urlArea = document.getElementById("video-url-area");
-  const input = document.getElementById("video-url-input");
-
-  urlArea.classList.remove("visible");
-  input.value = videoUrl || "";
 
   if (videoUrl) {
-    const embed = toEmbedUrl(videoUrl);
-    slot.innerHTML = embed
-      ? `<iframe src="${embed}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`
-      : buildPlaceholder();
+    slot.innerHTML = `
+      <div class="video-player-wrap">
+
+        <video
+          class="tutorial-video"
+          id="tutorial-video"
+          playsinline
+          preload="metadata"
+        >
+          <source src="${videoUrl}" type="video/mp4">
+        </video>
+
+        <!-- PLAY CENTRAL -->
+        <button class="custom-play-btn" id="custom-play-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="8,5 19,12 8,19"/>
+          </svg>
+        </button>
+
+        <!-- CONTROLES -->
+        <div class="video-controls">
+
+          <button class="bottom-play-btn" id="bottom-play-btn">
+            ▶
+          </button>
+
+          <span class="video-time" id="video-current">
+            0:00
+          </span>
+
+          <input
+            type="range"
+            class="video-progress"
+            id="video-progress"
+            min="0"
+            max="100"
+            value="0"
+          >
+
+          <span class="video-time" id="video-duration">
+            0:00
+          </span>
+
+        </div>
+
+      </div>
+    `;
+
+    const video = document.getElementById("tutorial-video");
+
+    const centerBtn = document.getElementById("custom-play-btn");
+
+    const bottomBtn = document.getElementById("bottom-play-btn");
+
+    const progress = document.getElementById("video-progress");
+
+    const current = document.getElementById("video-current");
+
+    const duration = document.getElementById("video-duration");
+
+    function formatTime(time) {
+      const mins = Math.floor(time / 60);
+      const secs = Math.floor(time % 60)
+        .toString()
+        .padStart(2, "0");
+
+      return `${mins}:${secs}`;
+    }
+
+    function playVideo() {
+      video.play();
+
+      centerBtn.classList.add("hide");
+
+      bottomBtn.innerHTML = "❚❚";
+    }
+
+    function pauseVideo() {
+      video.pause();
+
+      centerBtn.classList.remove("hide");
+
+      bottomBtn.innerHTML = "▶";
+    }
+
+    centerBtn.addEventListener("click", playVideo);
+
+    bottomBtn.addEventListener("click", () => {
+      if (video.paused) {
+        playVideo();
+      } else {
+        pauseVideo();
+      }
+    });
+
+    video.addEventListener("click", () => {
+      if (!video.paused) {
+        pauseVideo();
+      }
+    });
+
+    video.addEventListener("loadedmetadata", () => {
+      duration.textContent = formatTime(video.duration);
+    });
+
+    video.addEventListener("timeupdate", () => {
+      current.textContent = formatTime(video.currentTime);
+
+      progress.value = (video.currentTime / video.duration) * 100 || 0;
+    });
+
+    progress.addEventListener("input", () => {
+      video.currentTime = (progress.value / 100) * video.duration;
+    });
+
+    video.addEventListener("ended", () => {
+      pauseVideo();
+
+      progress.value = 0;
+    });
   } else {
     slot.innerHTML = buildPlaceholder();
   }
