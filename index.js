@@ -307,6 +307,13 @@ function switchTab(tab) {
     stabDoc.setAttribute("aria-pressed", String(!isSal));
   }
 
+  const dnavSal = document.getElementById("dnav-salgados");
+  const dnavDoc = document.getElementById("dnav-doces");
+  if (dnavSal && dnavDoc) {
+    dnavSal.className = "desktop-nav-btn" + (isSal ? " active" : "");
+    dnavDoc.className = "desktop-nav-btn" + (!isSal ? " active" : "");
+  }
+
   document.getElementById("section-label").textContent = isSal
     ? "Salgados em destaque"
     : "Doces em destaque";

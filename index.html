@@ -14,20 +14,12 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="shortcut icon" href="IconJeitoCaseiro.png" type="image/x-icon" />
     <style>
-      .sidebar-logo-img {
-        width: 52px;
-        height: 64px;
-        object-fit: contain;
-        flex-shrink: 0;
-        border-radius: 8px;
-      }
       .mobile-logo-img {
         width: 90px;
         height: 112px;
         object-fit: contain;
         border-radius: 14px;
       }
-      /* Remove o fundo laranja do logo-wrap já que a imagem tem fundo próprio */
       .logo-wrap {
         background: transparent !important;
         box-shadow: none !important;
@@ -39,145 +31,161 @@
   </head>
   <body>
     <div class="app-wrapper">
-      <!-- ══ SIDEBAR (desktop only) ══ -->
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-logo">
-          <img
-            id="img-logo-sidebar"
-            class="sidebar-logo-img"
-            src=""
-            alt="Jeito Caseiro"
-          />
-          <div class="sidebar-brand">
-            <span class="sidebar-name">JEITO CASEIRO</span>
-            <span class="sidebar-sub">Produtos Congelados</span>
-          </div>
-        </div>
-
-        <nav class="sidebar-nav">
-          <button
-            class="sidebar-tab active"
-            id="stab-salgados"
-            onclick="switchTab('salgados')"
-            aria-pressed="true"
-          >
-            <svg class="stab-icon" viewBox="0 0 28 28" fill="none">
-              <line
-                x1="9"
-                y1="4"
-                x2="9"
-                y2="13"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <line
-                x1="7"
-                y1="4"
-                x2="7"
-                y2="9.5"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <line
-                x1="11"
-                y1="4"
-                x2="11"
-                y2="9.5"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M7 9.5 Q9 13 9 13"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <line
-                x1="9"
-                y1="13"
-                x2="9"
-                y2="24"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M19 4 C19 4 21.5 7.5 21.5 11 C21.5 13.2 20 14.5 18.5 15 L18.5 24"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Salgados
-          </button>
-          <button
-            class="sidebar-tab"
-            id="stab-doces"
-            onclick="switchTab('doces')"
-            aria-pressed="false"
-          >
-            <svg class="stab-icon" viewBox="0 0 28 28" fill="none">
-              <rect
-                x="4"
-                y="15"
-                width="20"
-                height="9"
-                rx="2.5"
-                stroke="currentColor"
-                stroke-width="2"
-              />
-              <path
-                d="M4 19 Q14 15 24 19"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-              <line
-                x1="14"
-                y1="15"
-                x2="14"
-                y2="9"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path d="M13 9 Q12.5 7 14 5.5 Q15.5 7 14 9" fill="currentColor" />
-              <circle cx="9" cy="21" r="1.2" fill="currentColor" />
-              <circle cx="14" cy="22" r="1.2" fill="currentColor" />
-              <circle cx="19" cy="21" r="1.2" fill="currentColor" />
-            </svg>
-            Doces
-          </button>
-        </nav>
-
-        <div class="sidebar-footer">
-          <button class="sidebar-help-btn" onclick="showHelp()">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-            Ajuda
-          </button>
-        </div>
-      </aside>
-
       <!-- ══ MAIN PANEL ══ -->
       <main class="main-panel" id="main-panel">
-        <!-- HEADER (mobile) -->
+        <!-- ══ TOPBAR DESKTOP (oculta no mobile via CSS) ══ -->
+        <div class="desktop-topbar">
+          <div class="desktop-topbar-logo">
+            <img id="img-logo-topbar" src="" alt="Jeito Caseiro" />
+            <div class="desktop-topbar-brand">
+              <span class="desktop-topbar-name">JEITO CASEIRO</span>
+              <span class="desktop-topbar-sub">Produtos Congelados</span>
+            </div>
+          </div>
+
+          <nav class="desktop-topbar-nav">
+            <button
+              class="desktop-nav-btn active"
+              id="dnav-salgados"
+              onclick="switchTab('salgados')"
+            >
+              <svg viewBox="0 0 28 28" fill="none">
+                <line
+                  x1="9"
+                  y1="4"
+                  x2="9"
+                  y2="13"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="7"
+                  y1="4"
+                  x2="7"
+                  y2="9.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="11"
+                  y1="4"
+                  x2="11"
+                  y2="9.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="9"
+                  y1="13"
+                  x2="9"
+                  y2="24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M19 4 C19 4 21.5 7.5 21.5 11 C21.5 13.2 20 14.5 18.5 15 L18.5 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Salgados
+            </button>
+            <button
+              class="desktop-nav-btn"
+              id="dnav-doces"
+              onclick="switchTab('doces')"
+            >
+              <svg viewBox="0 0 28 28" fill="none">
+                <rect
+                  x="4"
+                  y="15"
+                  width="20"
+                  height="9"
+                  rx="2.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M4 19 Q14 15 24 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="14"
+                  y1="15"
+                  x2="14"
+                  y2="9"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M13 9 Q12.5 7 14 5.5 Q15.5 7 14 9"
+                  fill="currentColor"
+                />
+              </svg>
+              Doces
+            </button>
+          </nav>
+
+          <div class="desktop-topbar-search">
+            <div class="search-box">
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                type="text"
+                id="search-input-desktop"
+                placeholder="Pesquisar produto…"
+                oninput="
+                  document.getElementById('search-input').value = this.value;
+                  filterProducts();
+                "
+              />
+              <button
+                id="voice-btn-desktop"
+                onclick="toggleVoiceSearch()"
+                aria-label="Pesquisa por voz"
+                title="Pesquisa por voz"
+              >
+                🎤
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- /desktop-topbar -->
+
+        <!-- ══ HERO BANNER DESKTOP (oculto no mobile via CSS) ══ -->
+        <div class="desktop-hero">
+          <div class="desktop-hero-content">
+            <div class="desktop-hero-tag">🧊 Produtos Congelados</div>
+            <h2>Sabor caseiro,<br />direto do freezer<br />para sua mesa.</h2>
+            <p>
+              Pães, doces e salgados feitos com ingredientes selecionados.
+              Prontos para assar, sem complicação.
+            </p>
+          </div>
+        </div>
+        <!-- /desktop-hero -->
+
+        <!-- ══ HEADER MOBILE (oculto no desktop via CSS) ══ -->
         <div class="mobile-header">
           <div class="logo-wrap">
             <img
@@ -192,8 +200,9 @@
             <p>Selecione uma categoria</p>
           </div>
         </div>
+        <!-- /mobile-header -->
 
-        <!-- BUSCA -->
+        <!-- ══ BUSCA (mobile) ══ -->
         <div class="search-wrap">
           <div class="search-box">
             <svg
@@ -209,15 +218,12 @@
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
-
             <input
               type="text"
               id="search-input"
               placeholder="Pesquisar produto…"
               oninput="filterProducts()"
             />
-
-            <!-- BOTÃO VOZ -->
             <button
               id="voice-btn"
               onclick="toggleVoiceSearch()"
@@ -228,7 +234,9 @@
             </button>
           </div>
         </div>
-        <!-- ABAS (mobile) -->
+        <!-- /search-wrap -->
+
+        <!-- ══ ABAS MOBILE ══ -->
         <div class="tabs mobile-tabs">
           <button
             class="tab active"
@@ -328,25 +336,32 @@
             Doces
           </button>
         </div>
+        <!-- /mobile-tabs -->
 
-        <!-- LABEL + GRID -->
-        <div class="section-label" id="section-label">Salgados em destaque</div>
-        <div class="products" id="products-list"></div>
+        <!-- ══ CONTEÚDO PRINCIPAL (compartilhado mobile + desktop) ══ -->
+        <div class="desktop-content">
+          <div class="section-label" id="section-label">
+            Salgados em destaque
+          </div>
+          <div class="products" id="products-list"></div>
 
-        <div class="empty-state" id="empty-state">
-          <div class="empty-icon">🔍</div>
-          Nenhum produto encontrado para &ldquo;<span id="empty-query"></span
-          >&rdquo;
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon">🔍</div>
+            Nenhum produto encontrado para &ldquo;<span id="empty-query"></span
+            >&rdquo;
+          </div>
+
+          <div class="footer-hint">
+            Toque em um produto para ver a ficha técnica completa.
+          </div>
         </div>
-
-        <div class="footer-hint">
-          Toque em um produto para ver a ficha técnica completa.
-        </div>
+        <!-- /desktop-content -->
       </main>
+      <!-- /main-panel -->
     </div>
     <!-- /app-wrapper -->
 
-    <!-- FAB HELP (mobile only) -->
+    <!-- ══ FAB AJUDA ══ -->
     <button
       class="help-btn"
       onclick="showHelp()"
@@ -356,9 +371,9 @@
       ?
     </button>
 
-    <!-- ════════════════════════
+    <!-- ════════════════════════════════════
          MODAL FICHA TÉCNICA
-    ════════════════════════ -->
+    ════════════════════════════════════ -->
     <div
       class="modal-overlay"
       id="modal-overlay"
@@ -388,7 +403,7 @@
           <p class="modal-product-desc" id="modal-desc"></p>
         </div>
 
-        <!-- Boxings -->
+        <!-- Boxings (accordion) -->
         <div class="modal-scroll" id="modal-scroll">
           <!-- 1 · PREPARO -->
           <div class="boxing boxing-preparo" id="boxing-preparo">
@@ -403,7 +418,6 @@
               "
             >
               <div class="boxing-icon">
-                <!-- Chama de fogo: remete diretamente a forno/assar -->
                 <svg
                   width="20"
                   height="20"
@@ -472,7 +486,6 @@
               "
             >
               <div class="boxing-icon">
-                <!-- Floco de neve: freezer/congelamento, imediato para qualquer padeiro -->
                 <svg
                   width="20"
                   height="20"
@@ -530,7 +543,6 @@
               "
             >
               <div class="boxing-icon">
-                <!-- Lista com bolinhas: lista de ingredientes, universal para qualquer idade -->
                 <svg
                   width="20"
                   height="20"
@@ -604,7 +616,6 @@
               "
             >
               <div class="boxing-icon">
-                <!-- Régua: medidas, peso, rendimento — linguagem direta do padeiro -->
                 <svg
                   width="20"
                   height="20"
@@ -656,8 +667,8 @@
     <script src="images.js"></script>
     <script src="index.js"></script>
     <script>
-      document.getElementById("img-logo-sidebar").src = IMG_LOGO;
       document.getElementById("img-logo-mobile").src = IMG_LOGO;
+      document.getElementById("img-logo-topbar").src = IMG_LOGO;
     </script>
   </body>
 </html>
