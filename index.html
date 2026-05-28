@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="novas-features.css" />
     <link rel="shortcut icon" href="IconJeitoCaseiro.png" type="image/x-icon" />
     <style>
       .mobile-logo-img {
@@ -154,10 +155,7 @@
                 type="text"
                 id="search-input-desktop"
                 placeholder="Pesquisar produto…"
-                oninput="
-                  document.getElementById('search-input').value = this.value;
-                  filterProducts();
-                "
+                oninput="filterProducts(this.value)"
               />
               <button
                 id="voice-btn-desktop"
@@ -222,7 +220,7 @@
               type="text"
               id="search-input"
               placeholder="Pesquisar produto…"
-              oninput="filterProducts()"
+              oninput="filterProducts(this.value)"
             />
             <button
               id="voice-btn"
@@ -397,10 +395,22 @@
           </button>
         </div>
 
-        <!-- Descrição -->
+        <!-- Descrição + botão Modo Mãos Sujas -->
         <div class="modal-meta">
           <div class="modal-handle"></div>
           <p class="modal-product-desc" id="modal-desc"></p>
+
+          <!-- ① BOTÃO MODO MÃOS SUJAS -->
+          <button
+            id="maos-sujas-btn"
+            class="maos-sujas-btn"
+            onclick="toggleMaosSujas()"
+            aria-pressed="false"
+            title="Ativar Modo Mãos Sujas — controle por voz"
+          >
+            <span class="mic-icon"></span>
+            Modo Mãos Sujas
+          </button>
         </div>
 
         <!-- Boxings (accordion) -->
@@ -457,17 +467,11 @@
             <div class="boxing-body" id="body-preparo">
               <div class="boxing-inner">
                 <div class="video-slot" id="video-slot"></div>
-                <div class="video-url-area" id="video-url-area">
-                  <input
-                    type="url"
-                    class="video-url-input"
-                    id="video-url-input"
-                    placeholder="Cole o link do YouTube ou Vimeo…"
-                  />
-                  <button class="video-url-btn" onclick="loadVideo()">
-                    Carregar
-                  </button>
-                </div>
+                <div class="video-url-area" id="video-url-area"></div>
+
+                <!-- ② TIMER DE FERMENTAÇÃO (preenchido pelo JS) -->
+                <div id="timer-inline-wrap"></div>
+
                 <ul class="steps-list" id="preparo-steps"></ul>
               </div>
             </div>
