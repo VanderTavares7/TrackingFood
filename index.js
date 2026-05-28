@@ -338,8 +338,8 @@ const DATA = {
 /* ═══════════════════════════════════════
    ESTADO
 ═══════════════════════════════════════ */
-let currentTab  = "salgados";
-let openBoxings = new Set();
+let currentTab     = "salgados";
+let openBoxings    = new Set();
 let currentProduct = null;
 
 /* ═══════════════════════════════════════
@@ -352,9 +352,9 @@ function switchTab(tab) {
 
   const isSal = tab === "salgados";
 
-  /* ── Abas mobile ── */
-  const tabSal  = document.getElementById("tab-salgados");
-  const tabDoc  = document.getElementById("tab-doces");
+  /* Abas mobile */
+  const tabSal = document.getElementById("tab-salgados");
+  const tabDoc = document.getElementById("tab-doces");
   if (tabSal && tabDoc) {
     tabSal.className = "tab " + (isSal ? "active" : "inactive");
     tabSal.setAttribute("aria-pressed", String(isSal));
@@ -362,7 +362,7 @@ function switchTab(tab) {
     tabDoc.setAttribute("aria-pressed", String(!isSal));
   }
 
-  /* ── Abas sidebar (desktop) ── */
+  /* Abas sidebar (desktop) */
   const stabSal = document.getElementById("stab-salgados");
   const stabDoc = document.getElementById("stab-doces");
   if (stabSal && stabDoc) {
@@ -533,11 +533,13 @@ function toggleBoxing(key) {
   } else {
     el.classList.add("open");
     openBoxings.add(key);
+
+    // Aguarda a animação CSS de grid-template-rows (280ms) terminar antes de rolar
     setTimeout(() => {
       const scroll = document.getElementById("modal-scroll");
       const boxTop = el.offsetTop - scroll.offsetTop;
       scroll.scrollTo({ top: boxTop - 12, behavior: "smooth" });
-    }, 30);
+    }, 300);
   }
 }
 
