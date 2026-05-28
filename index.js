@@ -329,7 +329,7 @@ function updateTabUI(tab) {
 
   const section = document.getElementById("section-label");
   if (section) {
-    section.textContent = isSal ? "Salgados em destaque" : "Doces em destaque";
+    section.textContent = isSal ? "Salgados" : "Doces";
   }
 }
 
@@ -365,8 +365,8 @@ function switchTab(tab) {
   }
 
   document.getElementById("section-label").textContent = isSal
-    ? "Salgados em destaque"
-    : "Doces em destaque";
+    ? "Salgados"
+    : "Doces";
 
   renderProducts(DATA[tab]);
 }
@@ -1710,10 +1710,13 @@ function _routeCommand(text) {
       "reproduz",
     ])
   ) {
-    if (window._tutorialPlayFn) {
-      window._tutorialPlayFn();
-      _showMaosSujasToast("▶️ Vídeo reproduzindo");
-    }
+    _openBoxing("preparo");
+    setTimeout(() => {
+      if (window._tutorialPlayFn) {
+        window._tutorialPlayFn();
+        _showMaosSujasToast("▶️ Vídeo reproduzindo");
+      }
+    }, 350);
     return true;
   }
 
