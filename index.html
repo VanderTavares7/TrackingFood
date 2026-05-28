@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Jeito Caseiro – Produtos Congelados</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="phone" id="phone">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="logo-wrap">
+          <svg
+            class="logo-svg"
+            viewBox="0 0 80 72"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="16" y="36" width="48" height="32" rx="3" fill="#5c3317" />
+            <polygon points="40,7 72,37 8,37" fill="#4a2810" />
+            <rect
+              x="31"
+              y="46"
+              width="18"
+              height="22"
+              rx="2.5"
+              fill="#e07820"
+            />
+            <rect
+              x="19"
+              y="41"
+              width="9"
+              height="9"
+              rx="2"
+              fill="#e07820"
+              opacity="0.75"
+            />
+            <rect
+              x="52"
+              y="41"
+              width="9"
+              height="9"
+              rx="2"
+              fill="#e07820"
+              opacity="0.75"
+            />
+            <path d="M40 5 Q32 0 22 3 Q31 10 40 5Z" fill="#3d2409" />
+            <path d="M40 5 Q48 0 58 3 Q49 10 40 5Z" fill="#3d2409" />
+            <ellipse cx="40" cy="5.5" rx="2.5" ry="1.8" fill="#3d2409" />
+          </svg>
+          <span class="logo-label">JEITO<br />CASEIRO</span>
+        </div>
+        <h1>Produtos Congelados</h1>
+        <p>Selecione uma categoria</p>
+      </div>
+
+      <!-- BUSCA -->
+      <div class="search-wrap">
+        <div class="search-box">
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Pesquisar produto…"
+            oninput="filterProducts()"
+          />
+        </div>
+      </div>
+
+      <!-- ABAS -->
+      <div class="tabs">
+        <button
+          class="tab active"
+          id="tab-salgados"
+          onclick="switchTab('salgados')"
+          aria-pressed="true"
+        >
+          <svg class="tab-icon" viewBox="0 0 28 28" fill="none">
+            <line
+              x1="9"
+              y1="4"
+              x2="9"
+              y2="13"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="7"
+              y1="4"
+              x2="7"
+              y2="9.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="11"
+              y1="4"
+              x2="11"
+              y2="9.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M7 9.5 Q9 13 9 13"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="9"
+              y1="13"
+              x2="9"
+              y2="24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M19 4 C19 4 21.5 7.5 21.5 11 C21.5 13.2 20 14.5 18.5 15 L18.5 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Salgados
+        </button>
+        <button
+          class="tab inactive"
+          id="tab-doces"
+          onclick="switchTab('doces')"
+          aria-pressed="false"
+        >
+          <svg class="tab-icon" viewBox="0 0 28 28" fill="none">
+            <rect
+              x="4"
+              y="15"
+              width="20"
+              height="9"
+              rx="2.5"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M4 19 Q14 15 24 19"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="14"
+              y1="15"
+              x2="14"
+              y2="9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path d="M13 9 Q12.5 7 14 5.5 Q15.5 7 14 9" fill="currentColor" />
+            <circle cx="9" cy="21" r="1.2" fill="currentColor" />
+            <circle cx="14" cy="22" r="1.2" fill="currentColor" />
+            <circle cx="19" cy="21" r="1.2" fill="currentColor" />
+          </svg>
+          Doces
+        </button>
+      </div>
+
+      <div class="section-label" id="section-label">Salgados em destaque</div>
+      <div class="products" id="products-list"></div>
+
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🔍</div>
+        Nenhum produto encontrado para &ldquo;<span id="empty-query"></span
+        >&rdquo;
+      </div>
+
+      <div class="footer-hint">
+        Toque em um produto para ver a ficha técnica completa.
+      </div>
+    </div>
+
+    <button
+      class="help-btn"
+      onclick="showHelp()"
+      title="Ajuda"
+      aria-label="Ajuda"
+    >
+      ?
+    </button>
+
+    <!-- ════════════════════════
+     MODAL FICHA TÉCNICA
+════════════════════════ -->
+    <div
+      class="modal-overlay"
+      id="modal-overlay"
+      onclick="closeModalOutside(event)"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title-text"
+    >
+      <div class="modal" id="modal">
+        <!-- Hero -->
+        <div class="modal-header">
+          <div id="modal-img-wrap"></div>
+          <div class="modal-hero-gradient"></div>
+          <div class="modal-hero-title" id="modal-title-text"></div>
+          <button
+            class="modal-close"
+            onclick="closeModalDirect()"
+            aria-label="Fechar"
+          >
+            &#10005;
+          </button>
+        </div>
+
+        <!-- Descrição -->
+        <div class="modal-meta">
+          <div class="modal-handle"></div>
+          <p class="modal-product-desc" id="modal-desc"></p>
+        </div>
+
+        <!-- Boxings -->
+        <div class="modal-scroll" id="modal-scroll">
+          <!-- 1 · PREPARO -->
+          <div class="boxing boxing-preparo" id="boxing-preparo">
+            <div
+              class="boxing-header"
+              onclick="toggleBoxing('preparo')"
+              role="button"
+              tabindex="0"
+              onkeydown="
+                if (event.key === 'Enter' || event.key === ' ')
+                  toggleBoxing('preparo');
+              "
+            >
+              <div class="boxing-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2z"
+                  />
+                  <line x1="9" y1="21" x2="15" y2="21" />
+                  <line x1="10" y1="17" x2="10" y2="21" />
+                  <line x1="14" y1="17" x2="14" y2="21" />
+                </svg>
+              </div>
+              <div class="boxing-texts">
+                <div class="boxing-label">Modo de Preparo</div>
+                <div class="boxing-sublabel">Passo a passo + vídeo</div>
+              </div>
+              <svg
+                class="boxing-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="boxing-body" id="body-preparo">
+              <div class="boxing-inner">
+                <!-- slot de vídeo -->
+                <div class="video-slot" id="video-slot"></div>
+                <!-- input URL (oculto até clicar no placeholder) -->
+                <div class="video-url-area" id="video-url-area">
+                  <input
+                    type="url"
+                    class="video-url-input"
+                    id="video-url-input"
+                    placeholder="Cole o link do YouTube ou Vimeo…"
+                  />
+                  <button class="video-url-btn" onclick="loadVideo()">
+                    Carregar
+                  </button>
+                </div>
+                <!-- passos -->
+                <ul class="steps-list" id="preparo-steps"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 · ARMAZENAMENTO -->
+          <div class="boxing boxing-armazena" id="boxing-armazena">
+            <div
+              class="boxing-header"
+              onclick="toggleBoxing('armazena')"
+              role="button"
+              tabindex="0"
+              onkeydown="
+                if (event.key === 'Enter' || event.key === ' ')
+                  toggleBoxing('armazena');
+              "
+            >
+              <div class="boxing-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="7" width="20" height="14" rx="2" />
+                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  <line x1="12" y1="12" x2="12" y2="16" />
+                  <line x1="10" y1="14" x2="14" y2="14" />
+                </svg>
+              </div>
+              <div class="boxing-texts">
+                <div class="boxing-label">Armazenamento</div>
+                <div class="boxing-sublabel">Temperatura e validade</div>
+              </div>
+              <svg
+                class="boxing-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="boxing-body" id="body-armazena">
+              <div class="boxing-inner">
+                <div class="storage-grid" id="storage-grid"></div>
+                <div class="storage-note" id="storage-note"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 · INGREDIENTES -->
+          <div class="boxing boxing-ingredientes" id="boxing-ingredientes">
+            <div
+              class="boxing-header"
+              onclick="toggleBoxing('ingredientes')"
+              role="button"
+              tabindex="0"
+              onkeydown="
+                if (event.key === 'Enter' || event.key === ' ')
+                  toggleBoxing('ingredientes');
+              "
+            >
+              <div class="boxing-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <div class="boxing-texts">
+                <div class="boxing-label">Ingredientes</div>
+                <div class="boxing-sublabel">Composição e alérgenos</div>
+              </div>
+              <svg
+                class="boxing-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="boxing-body" id="body-ingredientes">
+              <div class="boxing-inner">
+                <ul class="ingredients-list" id="ingredients-list"></ul>
+                <div class="allergens-wrap" id="allergens-wrap"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 · CARACTERÍSTICAS -->
+          <div class="boxing boxing-caract" id="boxing-caract">
+            <div
+              class="boxing-header"
+              onclick="toggleBoxing('caract')"
+              role="button"
+              tabindex="0"
+              onkeydown="
+                if (event.key === 'Enter' || event.key === ' ')
+                  toggleBoxing('caract');
+              "
+            >
+              <div class="boxing-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+              <div class="boxing-texts">
+                <div class="boxing-label">Características</div>
+                <div class="boxing-sublabel">Peso, rendimento e mais</div>
+              </div>
+              <svg
+                class="boxing-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="boxing-body" id="body-caract">
+              <div class="boxing-inner">
+                <div class="chars-grid" id="chars-grid"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /modal-scroll -->
+      </div>
+      <!-- /modal -->
+    </div>
+    <!-- /modal-overlay -->
+
+    <script src="index.js"></script>
+  </body>
+</html>
