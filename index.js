@@ -1461,27 +1461,76 @@ function _showMaosSujasFeedback(text) {
 
 /* ─── Roteador de comandos ─── */
 function _routeCommand(text) {
-  /* ── TIMER ── */
+  /* ── VÍDEO — play (vem ANTES do timer pra "roda", "toca" não conflitarem) ── */
   if (
     _match(text, [
-      "iniciar",
-      "inicia",
-      "comecar",
-      "comeca",
-      "liga",
-      "liga timer",
-      "liga o timer",
+      "play",
+      "toca o video",
+      "play video",
+      "iniciar video",
+      "comecar video",
+      "roda o video",
+      "tocar video",
+      "reproduzir",
+      "reproduz o video",
+      "assiste o video",
+      "assistir o video",
+    ])
+  ) {
+    _openBoxing("preparo");
+    setTimeout(() => {
+      if (window._tutorialPlayFn) {
+        window._tutorialPlayFn();
+        _showMaosSujasToast("▶️ Vídeo reproduzindo");
+      }
+    }, 350);
+    return true;
+  }
+
+  /* ── VÍDEO — pause (só pausa se vídeo estiver tocando, senão cai no timer) ── */
+  if (
+    _match(text, [
+      "pausa o video",
+      "para o video",
+      "pause video",
+      "pausar video",
+      "stop video",
+      "para o filme",
+      "parar video",
+      "pausa video",
+      "parar o video",
+    ])
+  ) {
+    const vid = window._tutorialVideo;
+    if (vid && !vid.paused) {
+      window._tutorialPauseFn();
+      _showMaosSujasToast("⏸️ Vídeo pausado");
+    } else {
+      timerPause();
+      _showMaosSujasToast("⏸️ Timer pausado");
+    }
+    return true;
+  }
+
+  /* ── TIMER — iniciar ── */
+  if (
+    _match(text, [
+      "iniciar timer",
+      "inicia timer",
       "inicia fermentacao",
       "iniciar fermentacao",
+      "liga timer",
+      "liga o timer",
+      "liga fermentacao",
+      "comecar timer",
+      "comeca timer",
+      "inicia o timer",
+      "comecar o timer",
+      "arranca",
       "bora",
       "vai",
       "pode ir",
-      "inicia o timer",
-      "comecar o timer",
-      "liga fermentacao",
-      "arranca",
       "vamo la",
-      "ja",
       "go",
       "start",
     ])
@@ -1491,12 +1540,14 @@ function _routeCommand(text) {
     return true;
   }
 
+  /* ── TIMER — pausar (palavras curtas só chegam aqui se vídeo não estiver tocando) ── */
   if (
     _match(text, [
       "pausar timer",
       "pausa o timer",
       "para o timer",
       "para timer",
+      "pause timer",
       "espera",
       "segura",
       "segura ai",
@@ -1504,25 +1555,34 @@ function _routeCommand(text) {
       "espera ai",
       "trava",
       "trava timer",
-      "pause timer",
+      "pausa",
+      "para",
+      "stop",
+      "parar",
     ])
   ) {
-    timerPause();
-    _showMaosSujasToast("⏸️ Timer pausado");
+    const vid = window._tutorialVideo;
+    if (vid && !vid.paused) {
+      /* vídeo tocando — pausa o vídeo */
+      window._tutorialPauseFn();
+      _showMaosSujasToast("⏸️ Vídeo pausado");
+    } else {
+      timerPause();
+      _showMaosSujasToast("⏸️ Timer pausado");
+    }
     return true;
   }
 
+  /* ── TIMER — retomar ── */
   if (
     _match(text, [
       "retomar",
       "retoma",
-      "continua",
-      "volta",
-      "volta timer",
-      "continuar",
-      "resume",
-      "continua o timer",
       "retomar timer",
+      "continua o timer",
+      "continuar timer",
+      "volta timer",
+      "resume",
       "despausa",
       "despausar",
     ])
@@ -1532,6 +1592,7 @@ function _routeCommand(text) {
     return true;
   }
 
+  /* ── TIMER — zerar ── */
   if (
     _match(text, [
       "zerar",
@@ -1543,9 +1604,10 @@ function _routeCommand(text) {
       "reseta",
       "comecar do zero",
       "do inicio",
-      "do começo",
       "reseta timer",
       "zera tudo",
+      "zera o timer",
+      "reiniciar timer",
     ])
   ) {
     timerReset();
@@ -1553,7 +1615,7 @@ function _routeCommand(text) {
     return true;
   }
 
-  /* ── ETAPAS DE PREPARO ── */
+  /* ── ETAPAS — próxima ── */
   if (
     _match(text, [
       "proxima",
@@ -1563,10 +1625,7 @@ function _routeCommand(text) {
       "avanca",
       "avanca etapa",
       "seguinte",
-      "proximo",
       "vai pra proxima",
-      "vai la",
-      "proximo passo",
       "continua etapa",
       "avancar",
       "next",
@@ -1578,6 +1637,7 @@ function _routeCommand(text) {
     return true;
   }
 
+  /* ── ETAPAS — anterior ── */
   if (
     _match(text, [
       "anterior",
@@ -1591,7 +1651,6 @@ function _routeCommand(text) {
       "repetir",
       "volta um passo",
       "back",
-      "anterior",
       "retroceder",
       "retrocede",
     ])
@@ -1637,7 +1696,6 @@ function _routeCommand(text) {
       "mostrar ingredientes",
       "abrir ingredientes",
       "lista de ingredientes",
-      "composicao do pao",
     ])
   ) {
     _openBoxing("ingredientes");
@@ -1651,7 +1709,6 @@ function _routeCommand(text) {
       "como guarda",
       "validade",
       "quanto dura",
-      "duracao",
       "guardar",
       "onde guardar",
       "como armazenar",
@@ -1671,7 +1728,6 @@ function _routeCommand(text) {
     _match(text, [
       "caracteristicas",
       "informacoes",
-      "peso",
       "nutricao",
       "tabela",
       "ver caracteristicas",
@@ -1688,63 +1744,7 @@ function _routeCommand(text) {
     return true;
   }
 
-  /* ── VÍDEO ── */
-  if (
-    _match(text, [
-      "play",
-      "toca",
-      "toca o video",
-      "play video",
-      "iniciar video",
-      "comecar video",
-      "roda o video",
-      "roda",
-      "video",
-      "assiste",
-      "assistir",
-      "tocar video",
-      "reproduzir",
-      "reproduz",
-    ])
-  ) {
-    _openBoxing("preparo");
-    setTimeout(() => {
-      if (window._tutorialPlayFn) {
-        window._tutorialPlayFn();
-        _showMaosSujasToast("▶️ Vídeo reproduzindo");
-      }
-    }, 350);
-    return true;
-  }
-
-  if (
-    _match(text, [
-      "pausa o video",
-      "para o video",
-      "pause video",
-      "pausar video",
-      "stop video",
-      "para o filme",
-      "parar video",
-      "pausa video",
-      "pausa",
-      "para",
-      "stop",
-      "para tudo",
-      "parar",
-    ])
-  ) {
-    if (window._tutorialPauseFn) {
-      window._tutorialPauseFn();
-      _showMaosSujasToast("⏸️ Vídeo pausado");
-    } else {
-      timerPause();
-      _showMaosSujasToast("⏸️ Timer pausado");
-    }
-    return true;
-  }
-
-  /* ── FECHAR / SAIR ── */
+  /* ── FECHAR ── */
   if (
     _match(text, [
       "fecha",
@@ -1752,8 +1752,6 @@ function _routeCommand(text) {
       "fecha ficha",
       "sai",
       "sair",
-      "voltar",
-      "volta",
       "close",
       "fecha tudo",
       "fecha modal",
@@ -1805,7 +1803,6 @@ function _routeCommand(text) {
     }
   }
 
-  /* Detecta nome do produto direto (sem prefixo) */
   for (const [key, name] of Object.entries(produtoMap)) {
     if (text === key || text === normalize(name)) {
       _openProductByName(name);
@@ -1813,7 +1810,7 @@ function _routeCommand(text) {
     }
   }
 
-  return false; /* comando não reconhecido */
+  return false;
 }
 
 /* ─── Helpers de comando ─── */
