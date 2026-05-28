@@ -1493,21 +1493,18 @@ function _routeCommand(text) {
 
   if (
     _match(text, [
-      "pausar",
-      "pausa",
-      "para",
+      "pausar timer",
+      "pausa o timer",
       "para o timer",
+      "para timer",
       "espera",
       "segura",
       "segura ai",
-      "para timer",
-      "pausar timer",
-      "pausa o timer",
       "um segundo",
       "espera ai",
       "trava",
       "trava timer",
-      "pause",
+      "pause timer",
     ])
   ) {
     timerPause();
@@ -1730,11 +1727,19 @@ function _routeCommand(text) {
       "para o filme",
       "parar video",
       "pausa video",
+      "pausa",
+      "para",
+      "stop",
+      "para tudo",
+      "parar",
     ])
   ) {
     if (window._tutorialPauseFn) {
       window._tutorialPauseFn();
       _showMaosSujasToast("⏸️ Vídeo pausado");
+    } else {
+      timerPause();
+      _showMaosSujasToast("⏸️ Timer pausado");
     }
     return true;
   }
