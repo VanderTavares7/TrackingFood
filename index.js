@@ -4,45 +4,68 @@ const DATA = {
       id: 1,
       name: "Pão Francês",
       desc: "Crocante por fora, macio por dentro. Pronto para assar.",
-      img: null,
-      emoji: "🥖",
+      img: "PaoIcon.webp",
+      emoji: "🥖", // emoji vira fallback se imagem não carregar
       ficha: {
         preparo: {
           videoUrl: "",
           steps: [
-            "Retire os pães do freezer e deixe descongelar por 30 minutos em temperatura ambiente.",
-            "Pré-aqueça o forno a 200 °C por pelo menos 10 minutos.",
-            "Disponha os pães em assadeira com papel manteiga, sem sobrepor.",
-            "Asse por 12 a 15 minutos até dourar uniformemente.",
-            "Sirva imediatamente — o pão perde a crocância após esfriar.",
+            "Higienizar mãos e utensílios antes de começar.",
+            "Untar as fôrmas com desmoldante usando pincel.",
+            "Posicionar os produtos congelados na assadeira com espaço entre eles.",
+            "Fermentar a 32 °C por aprox. 2h30 (em armário, o tempo varia conforme a temperatura ambiente).",
+            "Fazer cortes suaves na superfície com bisturi inclinado — evitar cortes profundos.",
+            "MEIA CARGA: forno pré-aquecido a 210 °C → finalizar a 175 °C por 15–17 min com vapor.",
+            "CARGA COMPLETA: forno pré-aquecido a 220 °C → finalizar a 180 °C por 18–20 min com vapor.",
+            "Retirar do forno, colocar no carrinho e aguardar resfriar antes de embalar.",
           ],
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",      value: "Até 60 dias" },
-            { icon: "🌡️", label: "Temperatura",  value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",    value: "Saco plástico selado" },
-            { icon: "⏰", label: "Após assar",   value: "Consumir no dia" },
+            { icon: "🧊", label: "Congelado", value: "Até 90 dias" },
+            { icon: "🌡️", label: "Temperatura", value: "−12 °C ou menos" },
+            { icon: "🚚", label: "Transporte", value: "−18 °C (tol. −12 °C)" },
+            {
+              icon: "🍞",
+              label: "Após forneamento",
+              value: "Até 1 dia (25 °C)",
+            },
           ],
-          note: "⚠️ Não recongele após descongelar. Mantenha sempre na embalagem original até o momento do preparo.",
+          note: "⚠️ Não recongelar após descongelar. Embalar corretamente após forneamento e manter longe de umidade.",
         },
         ingredientes: {
           items: [
-            { name: "Farinha de trigo",    qty: "60%" },
-            { name: "Água",               qty: "28%" },
-            { name: "Fermento biológico", qty: "5%" },
-            { name: "Sal refinado",       qty: "4%" },
-            { name: "Melhorador de farinha", qty: "3%" },
+            {
+              name: "Farinha de trigo enriquecida (ferro e ácido fólico)",
+              qty: "",
+            },
+            { name: "Água", qty: "" },
+            { name: "Sal", qty: "" },
+            { name: "Fermento biológico", qty: "" },
+            { name: "Melhoradores de farinha", qty: "" },
           ],
-          allergens: ["Glúten (trigo)", "Pode conter traços de soja"],
+          allergens: ["Glúten (trigo)"],
         },
         caracteristicas: [
-          { label: "Peso líquido",       value: "50 g / unidade" },
-          { label: "Unidades / pacote",  value: "10 unidades" },
-          { label: "Rendimento",         value: "10 porções" },
-          { label: "Tempo de preparo",   value: "12 – 15 min" },
-          { label: "Tipo de forno",      value: "Convencional / Elétrico" },
-          { label: "Origem",             value: "Produção artesanal" },
+          { label: "Peso assado", value: "72 g / unidade" },
+          { label: "Largura", value: "3,2 cm" },
+          { label: "Comprimento", value: "10,0 cm" },
+          { label: "Quebra", value: "18%" },
+          {
+            label: "Público alvo",
+            value:
+              "Padarias, lanchonetes, restaurantes, supermercados e redes de fast food",
+          },
+          { label: "Valor energético", value: "217 kcal / 100g" },
+          { label: "Carboidratos", value: "44 g / 100g" },
+          { label: "Açúcares totais", value: "1,1 g / 100g" },
+          { label: "Açúcares adicionados", value: "0,0 g / 100g" },
+          { label: "Proteínas", value: "8,4 g / 100g" },
+          { label: "Gorduras totais", value: "0,9 g / 100g" },
+          { label: "Gorduras saturadas", value: "0,3 g / 100g" },
+          { label: "Gorduras trans", value: "0,0 g / 100g" },
+          { label: "Fibras alimentares", value: "1,9 g / 100g" },
+          { label: "Sódio", value: "502 mg / 100g" },
         ],
       },
     },
@@ -50,7 +73,7 @@ const DATA = {
       id: 2,
       name: "Pão de Queijo",
       desc: "Receita mineira original, com queijo de verdade.",
-      img: null,
+      img: "PaoDeQueijoIcon.webp",
       emoji: "🧀",
       ficha: {
         preparo: {
@@ -65,32 +88,36 @@ const DATA = {
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",     value: "Até 90 dias" },
+            { icon: "🧊", label: "Freezer", value: "Até 90 dias" },
             { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",   value: "Saco plástico selado" },
-            { icon: "⏰", label: "Após assar",  value: "Consumir em 4 h" },
+            { icon: "📦", label: "Embalagem", value: "Saco plástico selado" },
+            { icon: "⏰", label: "Após assar", value: "Consumir em 4 h" },
           ],
           note: "⚠️ Não recongele após descongelar. Mantenha na embalagem fechada até o preparo para preservar a umidade.",
         },
         ingredientes: {
           items: [
-            { name: "Polvilho azedo",   qty: "35%" },
-            { name: "Polvilho doce",    qty: "10%" },
+            { name: "Polvilho azedo", qty: "35%" },
+            { name: "Polvilho doce", qty: "10%" },
             { name: "Queijo meia-cura", qty: "22%" },
-            { name: "Ovos caipiras",    qty: "12%" },
-            { name: "Leite integral",   qty: "10%" },
-            { name: "Óleo de soja",     qty: "8%" },
-            { name: "Sal refinado",     qty: "3%" },
+            { name: "Ovos caipiras", qty: "12%" },
+            { name: "Leite integral", qty: "10%" },
+            { name: "Óleo de soja", qty: "8%" },
+            { name: "Sal refinado", qty: "3%" },
           ],
-          allergens: ["Lactose (queijo, leite)", "Ovos", "Pode conter traços de glúten"],
+          allergens: [
+            "Lactose (queijo, leite)",
+            "Ovos",
+            "Pode conter traços de glúten",
+          ],
         },
         caracteristicas: [
-          { label: "Peso líquido",      value: "30 g / unidade" },
+          { label: "Peso líquido", value: "30 g / unidade" },
           { label: "Unidades / pacote", value: "15 unidades" },
-          { label: "Rendimento",        value: "15 porções" },
-          { label: "Tempo de preparo",  value: "20 – 25 min" },
-          { label: "Tipo de forno",     value: "Convencional / Elétrico" },
-          { label: "Origem",            value: "Receita mineira" },
+          { label: "Rendimento", value: "15 porções" },
+          { label: "Tempo de preparo", value: "20 – 25 min" },
+          { label: "Tipo de forno", value: "Convencional / Elétrico" },
+          { label: "Origem", value: "Receita mineira" },
         ],
       },
     },
@@ -113,32 +140,36 @@ const DATA = {
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",      value: "Até 60 dias" },
-            { icon: "🌡️", label: "Temperatura",  value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",    value: "Bandeja + filme" },
-            { icon: "⏰", label: "Após fritar",  value: "Consumir imediato" },
+            { icon: "🧊", label: "Freezer", value: "Até 60 dias" },
+            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
+            { icon: "📦", label: "Embalagem", value: "Bandeja + filme" },
+            { icon: "⏰", label: "Após fritar", value: "Consumir imediato" },
           ],
           note: "⚠️ Produto pré-frito. Não recongele. Óleo a 180 °C garante textura crocante sem absorção excessiva.",
         },
         ingredientes: {
           items: [
-            { name: "Frango desfiado",  qty: "35%" },
+            { name: "Frango desfiado", qty: "35%" },
             { name: "Farinha de trigo", qty: "28%" },
-            { name: "Batata cozida",    qty: "12%" },
-            { name: "Caldo de frango",  qty: "10%" },
-            { name: "Requeijão",        qty: "8%" },
-            { name: "Temperos naturais",qty: "4%" },
-            { name: "Sal e pimenta",    qty: "3%" },
+            { name: "Batata cozida", qty: "12%" },
+            { name: "Caldo de frango", qty: "10%" },
+            { name: "Requeijão", qty: "8%" },
+            { name: "Temperos naturais", qty: "4%" },
+            { name: "Sal e pimenta", qty: "3%" },
           ],
-          allergens: ["Glúten (trigo)", "Lactose (requeijão)", "Pode conter soja"],
+          allergens: [
+            "Glúten (trigo)",
+            "Lactose (requeijão)",
+            "Pode conter soja",
+          ],
         },
         caracteristicas: [
-          { label: "Peso líquido",      value: "60 g / unidade" },
+          { label: "Peso líquido", value: "60 g / unidade" },
           { label: "Unidades / pacote", value: "10 unidades" },
-          { label: "Rendimento",        value: "10 porções" },
-          { label: "Tempo de preparo",  value: "5 – 7 min" },
-          { label: "Método",            value: "Fritadeira / Airfryer" },
-          { label: "Formato",           value: "Gota tradicional" },
+          { label: "Rendimento", value: "10 porções" },
+          { label: "Tempo de preparo", value: "5 – 7 min" },
+          { label: "Método", value: "Fritadeira / Airfryer" },
+          { label: "Formato", value: "Gota tradicional" },
         ],
       },
     },
@@ -161,32 +192,35 @@ const DATA = {
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",     value: "Até 45 dias" },
+            { icon: "🧊", label: "Freezer", value: "Até 45 dias" },
             { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",   value: "Bandeja lacrada" },
-            { icon: "⏰", label: "Após assar",  value: "Consumir em 2 h" },
+            { icon: "📦", label: "Embalagem", value: "Bandeja lacrada" },
+            { icon: "⏰", label: "Após assar", value: "Consumir em 2 h" },
           ],
           note: "⚠️ Produto cru. Certifique-se de atingir temperatura interna de 75 °C antes de servir.",
         },
         ingredientes: {
           items: [
-            { name: "Carne bovina moída",   qty: "50%" },
-            { name: "Trigo para quibe",     qty: "25%" },
-            { name: "Cebola",               qty: "10%" },
-            { name: "Hortelã fresca",       qty: "6%" },
-            { name: "Alho",                 qty: "4%" },
-            { name: "Sal e pimenta-preta",  qty: "3%" },
-            { name: "Azeite de oliva",      qty: "2%" },
+            { name: "Carne bovina moída", qty: "50%" },
+            { name: "Trigo para quibe", qty: "25%" },
+            { name: "Cebola", qty: "10%" },
+            { name: "Hortelã fresca", qty: "6%" },
+            { name: "Alho", qty: "4%" },
+            { name: "Sal e pimenta-preta", qty: "3%" },
+            { name: "Azeite de oliva", qty: "2%" },
           ],
-          allergens: ["Glúten (trigo para quibe)", "Pode conter traços de leite"],
+          allergens: [
+            "Glúten (trigo para quibe)",
+            "Pode conter traços de leite",
+          ],
         },
         caracteristicas: [
-          { label: "Peso líquido",      value: "80 g / unidade" },
+          { label: "Peso líquido", value: "80 g / unidade" },
           { label: "Unidades / pacote", value: "8 unidades" },
-          { label: "Rendimento",        value: "8 porções" },
-          { label: "Tempo de preparo",  value: "25 – 30 min" },
-          { label: "Tipo de forno",     value: "Convencional" },
-          { label: "Origem",            value: "Receita árabe" },
+          { label: "Rendimento", value: "8 porções" },
+          { label: "Tempo de preparo", value: "25 – 30 min" },
+          { label: "Tipo de forno", value: "Convencional" },
+          { label: "Origem", value: "Receita árabe" },
         ],
       },
     },
@@ -211,30 +245,30 @@ const DATA = {
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",    value: "Até 30 dias" },
-            { icon: "❄️", label: "Geladeira",  value: "Até 3 dias" },
-            { icon: "🌡️", label: "Temperatura",value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",  value: "Forma com tampa" },
+            { icon: "🧊", label: "Freezer", value: "Até 30 dias" },
+            { icon: "❄️", label: "Geladeira", value: "Até 3 dias" },
+            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
+            { icon: "📦", label: "Embalagem", value: "Forma com tampa" },
           ],
           note: "💡 Após descongelar, conserve na geladeira e consuma em até 3 dias. Não volte ao freezer.",
         },
         ingredientes: {
           items: [
-            { name: "Leite condensado",   qty: "40%" },
-            { name: "Creme de leite",     qty: "25%" },
-            { name: "Ovos inteiros",      qty: "20%" },
-            { name: "Açúcar (caramelo)",  qty: "10%" },
-            { name: "Baunilha natural",   qty: "5%" },
+            { name: "Leite condensado", qty: "40%" },
+            { name: "Creme de leite", qty: "25%" },
+            { name: "Ovos inteiros", qty: "20%" },
+            { name: "Açúcar (caramelo)", qty: "10%" },
+            { name: "Baunilha natural", qty: "5%" },
           ],
           allergens: ["Lactose (leite condensado, creme)", "Ovos"],
         },
         caracteristicas: [
-          { label: "Peso líquido",    value: "450 g / unidade" },
-          { label: "Rendimento",      value: "6 porções" },
-          { label: "Textura",         value: "Cremosa e firme" },
-          { label: "Serviço",         value: "Gelado" },
+          { label: "Peso líquido", value: "450 g / unidade" },
+          { label: "Rendimento", value: "6 porções" },
+          { label: "Textura", value: "Cremosa e firme" },
+          { label: "Serviço", value: "Gelado" },
           { label: "Descongelamento", value: "8 h na geladeira" },
-          { label: "Ocasião",         value: "Sobremesa / Festa" },
+          { label: "Ocasião", value: "Sobremesa / Festa" },
         ],
       },
     },
@@ -256,32 +290,36 @@ const DATA = {
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",    value: "Até 45 dias" },
-            { icon: "❄️", label: "Geladeira",  value: "Até 4 dias" },
-            { icon: "🌡️", label: "Temperatura",value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",  value: "Caixa lacrada" },
+            { icon: "🧊", label: "Freezer", value: "Até 45 dias" },
+            { icon: "❄️", label: "Geladeira", value: "Até 4 dias" },
+            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
+            { icon: "📦", label: "Embalagem", value: "Caixa lacrada" },
           ],
           note: "💡 Após cortar, cubra com filme plástico para preservar a umidade e proteger a cobertura.",
         },
         ingredientes: {
           items: [
-            { name: "Cenoura",          qty: "28%" },
+            { name: "Cenoura", qty: "28%" },
             { name: "Farinha de trigo", qty: "25%" },
-            { name: "Açúcar",           qty: "18%" },
-            { name: "Ovos",             qty: "12%" },
-            { name: "Óleo de soja",     qty: "10%" },
-            { name: "Chocolate em pó",  qty: "5%" },
-            { name: "Fermento em pó",   qty: "2%" },
+            { name: "Açúcar", qty: "18%" },
+            { name: "Ovos", qty: "12%" },
+            { name: "Óleo de soja", qty: "10%" },
+            { name: "Chocolate em pó", qty: "5%" },
+            { name: "Fermento em pó", qty: "2%" },
           ],
-          allergens: ["Glúten (trigo)", "Ovos", "Pode conter traços de leite e soja"],
+          allergens: [
+            "Glúten (trigo)",
+            "Ovos",
+            "Pode conter traços de leite e soja",
+          ],
         },
         caracteristicas: [
-          { label: "Peso líquido",    value: "700 g / bolo" },
-          { label: "Rendimento",      value: "10 fatias" },
-          { label: "Textura",         value: "Fofo e úmido" },
-          { label: "Cobertura",       value: "Ganache de chocolate" },
+          { label: "Peso líquido", value: "700 g / bolo" },
+          { label: "Rendimento", value: "10 fatias" },
+          { label: "Textura", value: "Fofo e úmido" },
+          { label: "Cobertura", value: "Ganache de chocolate" },
           { label: "Descongelamento", value: "4 h na geladeira" },
-          { label: "Ocasião",         value: "Lanche / Festa" },
+          { label: "Ocasião", value: "Lanche / Festa" },
         ],
       },
     },
@@ -303,32 +341,32 @@ const DATA = {
         },
         armazenamento: {
           cards: [
-            { icon: "🧊", label: "Freezer",         value: "Até 30 dias" },
-            { icon: "🌡️", label: "Temperatura",     value: "−18 °C ou menos" },
-            { icon: "📦", label: "Embalagem",       value: "Bandeja individual" },
+            { icon: "🧊", label: "Freezer", value: "Até 30 dias" },
+            { icon: "🌡️", label: "Temperatura", value: "−18 °C ou menos" },
+            { icon: "📦", label: "Embalagem", value: "Bandeja individual" },
             { icon: "⏰", label: "Após descongelar", value: "Consumir no dia" },
           ],
           note: "⚠️ O recheio de creme é sensível ao calor. Aqueça somente no forno convencional — nunca no micro-ondas.",
         },
         ingredientes: {
           items: [
-            { name: "Farinha de trigo",  qty: "30%" },
-            { name: "Leite integral",    qty: "22%" },
-            { name: "Ovos",              qty: "15%" },
-            { name: "Açúcar",            qty: "14%" },
-            { name: "Manteiga",          qty: "10%" },
+            { name: "Farinha de trigo", qty: "30%" },
+            { name: "Leite integral", qty: "22%" },
+            { name: "Ovos", qty: "15%" },
+            { name: "Açúcar", qty: "14%" },
+            { name: "Manteiga", qty: "10%" },
             { name: "Creme de baunilha", qty: "7%" },
-            { name: "Fermento biológico",qty: "2%" },
+            { name: "Fermento biológico", qty: "2%" },
           ],
           allergens: ["Glúten (trigo)", "Lactose (leite, manteiga)", "Ovos"],
         },
         caracteristicas: [
-          { label: "Peso líquido",      value: "70 g / unidade" },
+          { label: "Peso líquido", value: "70 g / unidade" },
           { label: "Unidades / pacote", value: "6 unidades" },
-          { label: "Rendimento",        value: "6 porções" },
-          { label: "Recheio",           value: "Creme de baunilha" },
-          { label: "Tempo de preparo",  value: "45 min + 8 min forno" },
-          { label: "Ocasião",           value: "Lanche / Café da manhã" },
+          { label: "Rendimento", value: "6 porções" },
+          { label: "Recheio", value: "Creme de baunilha" },
+          { label: "Tempo de preparo", value: "45 min + 8 min forno" },
+          { label: "Ocasião", value: "Lanche / Café da manhã" },
         ],
       },
     },
@@ -338,8 +376,8 @@ const DATA = {
 /* ═══════════════════════════════════════
    ESTADO
 ═══════════════════════════════════════ */
-let currentTab     = "salgados";
-let openBoxings    = new Set();
+let currentTab = "salgados";
+let openBoxings = new Set();
 let currentProduct = null;
 
 /* ═══════════════════════════════════════
@@ -380,7 +418,7 @@ function switchTab(tab) {
 }
 
 function filterProducts() {
-  const q   = document.getElementById("search-input").value.toLowerCase().trim();
+  const q = document.getElementById("search-input").value.toLowerCase().trim();
   const all = DATA[currentTab];
   if (!q) {
     document.getElementById("empty-state").style.display = "none";
@@ -388,12 +426,12 @@ function filterProducts() {
     return;
   }
   const filtered = all.filter(
-    (p) => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+    (p) => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q),
   );
   if (filtered.length === 0) {
     document.getElementById("products-list").innerHTML = "";
     document.getElementById("empty-state").style.display = "block";
-    document.getElementById("empty-query").textContent  = q;
+    document.getElementById("empty-query").textContent = q;
   } else {
     document.getElementById("empty-state").style.display = "none";
     renderProducts(filtered);
@@ -435,7 +473,7 @@ function renderProducts(list) {
 ═══════════════════════════════════════ */
 function openModal(id) {
   const all = [...DATA.salgados, ...DATA.doces];
-  const p   = all.find((x) => x.id === id);
+  const p = all.find((x) => x.id === id);
   if (!p) return;
   currentProduct = p;
 
@@ -446,7 +484,7 @@ function openModal(id) {
     : `<div class="modal-hero-placeholder">${p.emoji}</div>`;
 
   document.getElementById("modal-title-text").textContent = p.name;
-  document.getElementById("modal-desc").textContent       = p.desc;
+  document.getElementById("modal-desc").textContent = p.desc;
 
   /* Vídeo slot */
   resetVideoSlot(p.ficha.preparo.videoUrl);
@@ -458,36 +496,40 @@ function openModal(id) {
         `<li class="step-item">
           <span class="step-num">${i + 1}</span>
           <span class="step-text">${s}</span>
-        </li>`
+        </li>`,
     )
     .join("");
 
   /* Armazenamento */
-  document.getElementById("storage-grid").innerHTML = p.ficha.armazenamento.cards
-    .map(
-      (c) =>
-        `<div class="storage-card">
+  document.getElementById("storage-grid").innerHTML =
+    p.ficha.armazenamento.cards
+      .map(
+        (c) =>
+          `<div class="storage-card">
           <div class="storage-card-icon">${c.icon}</div>
           <div class="storage-card-label">${c.label}</div>
           <div class="storage-card-value">${c.value}</div>
-        </div>`
-    )
-    .join("");
-  document.getElementById("storage-note").textContent = p.ficha.armazenamento.note;
+        </div>`,
+      )
+      .join("");
+  document.getElementById("storage-note").textContent =
+    p.ficha.armazenamento.note;
 
   /* Ingredientes */
-  document.getElementById("ingredients-list").innerHTML = p.ficha.ingredientes.items
-    .map(
-      (item) =>
-        `<li class="ingredient-item">
+  document.getElementById("ingredients-list").innerHTML =
+    p.ficha.ingredientes.items
+      .map(
+        (item) =>
+          `<li class="ingredient-item">
           <span class="ingredient-name">${item.name}</span>
           <span class="ingredient-qty">${item.qty}</span>
-        </li>`
-    )
-    .join("");
-  document.getElementById("allergens-wrap").innerHTML = p.ficha.ingredientes.allergens
-    .map((a) => `<div class="allergen-tag">⚠️ ${a}</div>`)
-    .join("");
+        </li>`,
+      )
+      .join("");
+  document.getElementById("allergens-wrap").innerHTML =
+    p.ficha.ingredientes.allergens
+      .map((a) => `<div class="allergen-tag">⚠️ ${a}</div>`)
+      .join("");
 
   /* Características */
   document.getElementById("chars-grid").innerHTML = p.ficha.caracteristicas
@@ -496,7 +538,7 @@ function openModal(id) {
         `<div class="char-card">
           <div class="char-label">${c.label}</div>
           <div class="char-value">${c.value}</div>
-        </div>`
+        </div>`,
     )
     .join("");
 
@@ -548,17 +590,20 @@ function toggleBoxing(key) {
 ═══════════════════════════════════════ */
 function toEmbedUrl(url) {
   if (!url) return "";
-  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  if (yt) return `https://www.youtube.com/embed/${yt[1]}?rel=0&modestbranding=1`;
+  const yt = url.match(
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+  );
+  if (yt)
+    return `https://www.youtube.com/embed/${yt[1]}?rel=0&modestbranding=1`;
   const vm = url.match(/vimeo\.com\/(\d+)/);
   if (vm) return `https://player.vimeo.com/video/${vm[1]}`;
   return url;
 }
 
 function resetVideoSlot(videoUrl) {
-  const slot    = document.getElementById("video-slot");
+  const slot = document.getElementById("video-slot");
   const urlArea = document.getElementById("video-url-area");
-  const input   = document.getElementById("video-url-input");
+  const input = document.getElementById("video-url-input");
 
   urlArea.classList.remove("visible");
   input.value = videoUrl || "";
@@ -595,9 +640,15 @@ function showVideoInput() {
 
 function loadVideo() {
   const val = document.getElementById("video-url-input").value.trim();
-  if (!val) { alert("Cole o link do vídeo antes de carregar."); return; }
+  if (!val) {
+    alert("Cole o link do vídeo antes de carregar.");
+    return;
+  }
   const embed = toEmbedUrl(val);
-  if (!embed) { alert("Link inválido. Use um link do YouTube ou Vimeo."); return; }
+  if (!embed) {
+    alert("Link inválido. Use um link do YouTube ou Vimeo.");
+    return;
+  }
   const slot = document.getElementById("video-slot");
   slot.innerHTML = `<iframe src="${embed}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
   document.getElementById("video-url-area").classList.remove("visible");
@@ -609,10 +660,10 @@ function loadVideo() {
 function showHelp() {
   alert(
     "Jeito Caseiro — Ficha Técnica\n\n" +
-    "• Escolha entre Salgados e Doces nas abas.\n" +
-    "• Toque em um produto para abrir a ficha completa.\n" +
-    "• Dentro da ficha, toque em cada seção para expandir.\n" +
-    "• No Modo de Preparo, toque no placeholder de vídeo e cole um link do YouTube para carregar o vídeo."
+      "• Escolha entre Salgados e Doces nas abas.\n" +
+      "• Toque em um produto para abrir a ficha completa.\n" +
+      "• Dentro da ficha, toque em cada seção para expandir.\n" +
+      "• No Modo de Preparo, toque no placeholder de vídeo e cole um link do YouTube para carregar o vídeo.",
   );
 }
 
