@@ -69,11 +69,17 @@ body {
 }
 
 /* ══════════════════════════════════════════
-   DESKTOP HEADER — visível só no desktop
+   ELEMENTOS DESKTOP — ocultos no mobile
 ══════════════════════════════════════════ */
-.desktop-header {
+.desktop-topbar,
+.desktop-hero {
   display: none;
-  /* escondido no mobile */
+}
+
+/* desktop-content no mobile: sem padding extra
+   (o padding vem dos filhos: .products, .section-label) */
+.desktop-content {
+  display: block;
 }
 
 /* ══════════════════════════════════════════
@@ -1219,8 +1225,22 @@ body {
     padding-bottom: 80px;
   }
 
-  /* ── Cabeçalho desktop: barra horizontal fixo ── */
+  /* ── Elementos exclusivos do desktop ── */
   .mobile-header {
+    display: none;
+  }
+
+  .desktop-hero {
+    display: block;
+  }
+
+  .desktop-content {
+    padding: 40px 48px 0;
+  }
+
+  /* Oculta busca e abas mobile */
+  .search-wrap,
+  .tabs.mobile-tabs {
     display: none;
   }
 
@@ -1348,15 +1368,8 @@ body {
     box-shadow: 0 0 0 3px rgba(232, 117, 26, 0.25);
   }
 
-  /* Oculta a search e abas do mobile */
-  .search-wrap,
-  .tabs.mobile-tabs {
-    display: none;
-  }
-
   /* ── Hero banner ── */
   .desktop-hero {
-    display: block;
     background: linear-gradient(120deg, #2B2018 0%, #3d2810 55%, #5a3818 100%);
     padding: 56px 48px 52px;
     position: relative;
@@ -1406,11 +1419,6 @@ body {
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.7;
     max-width: 420px;
-  }
-
-  /* ── Área de conteúdo ── */
-  .desktop-content {
-    padding: 40px 48px 0;
   }
 
   .section-label {
