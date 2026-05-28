@@ -609,7 +609,30 @@ function initVoiceSearch() {
   };
 
   recognition.onresult = (event) => {
-    const text = event.results[0][0].transcript;
+    let text = event.results[0][0].transcript.toLowerCase().trim();
+
+    /* Remove palavras comuns */
+    const removeWords = [
+      "quero",
+      "pesquisar",
+      "buscar",
+      "procure",
+      "procurar",
+      "me mostra",
+      "mostrar",
+      "produto",
+      "o",
+      "a",
+      "um",
+      "uma",
+      "de",
+    ];
+
+    removeWords.forEach((word) => {
+      text = text.replace(word, "");
+    });
+
+    text = text.trim();
 
     const input = document.getElementById("search-input");
 
