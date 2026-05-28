@@ -10,14 +10,14 @@ const DATA = {
         preparo: {
           videoUrl: "",
           steps: [
-            "Higienizar mãos e utensílios antes de começar.",
-            "Untar as fôrmas com desmoldante usando pincel.",
-            "Posicionar os produtos congelados na assadeira com espaço entre eles.",
-            "Fermentar a 32 °C por aprox. 2h30 (em armário, o tempo varia conforme a temperatura ambiente).",
-            "Fazer cortes suaves na superfície com bisturi inclinado — evitar cortes profundos.",
-            "MEIA CARGA: forno pré-aquecido a 210 °C → finalizar a 175 °C por 15–17 min com vapor.",
-            "CARGA COMPLETA: forno pré-aquecido a 220 °C → finalizar a 180 °C por 18–20 min com vapor.",
-            "Retirar do forno, colocar no carrinho e aguardar resfriar antes de embalar.",
+            "🧼 Higienizar mãos e utensílios antes de começar.",
+            "🖌️ Untar as fôrmas com desmoldante usando pincel.",
+            "🗂️ Posicionar os produtos congelados na assadeira com espaço entre eles.",
+            "🌡️ Fermentar a 32 °C por aprox. 2h30 (em armário, o tempo varia conforme a temperatura ambiente).",
+            "🔪 Fazer cortes suaves na superfície com bisturi inclinado — evitar cortes profundos.",
+            "🔥 MEIA CARGA: forno pré-aquecido a 210 °C → finalizar a 175 °C por 15–17 min com vapor.",
+            "🔥 CARGA COMPLETA: forno pré-aquecido a 220 °C → finalizar a 180 °C por 18–20 min com vapor.",
+            "🧺 Retirar do forno, colocar no carrinho e aguardar resfriar antes de embalar.",
           ],
         },
         armazenamento: {
@@ -79,11 +79,12 @@ const DATA = {
         preparo: {
           videoUrl: "",
           steps: [
-            "Não precisa descongelar! Leve direto do freezer ao forno.",
-            "Pré-aqueça o forno a 180 °C.",
-            "Distribua os pães de queijo em assadeira levemente untada, com 3 cm de espaço entre eles.",
-            "Asse por 20 a 25 minutos até dourar e crescer bem.",
-            "Aguarde 3 minutos antes de servir.",
+            "🧼 Higienizar mãos e utensílios antes de começar.",
+            "❄️ Não precisa descongelar! Leve direto do freezer ao forno.",
+            "🌡️ Pré-aqueça o forno a 180 °C.",
+            "🗂️ Distribua os pães de queijo em assadeira levemente untada, com 3 cm de espaço entre eles.",
+            "🔥 Asse por 20 a 25 minutos até dourar e crescer bem.",
+            "⏱️ Aguarde 3 minutos antes de servir.",
           ],
         },
         armazenamento: {
@@ -390,7 +391,6 @@ function switchTab(tab) {
 
   const isSal = tab === "salgados";
 
-  /* Abas mobile */
   const tabSal = document.getElementById("tab-salgados");
   const tabDoc = document.getElementById("tab-doces");
   if (tabSal && tabDoc) {
@@ -400,7 +400,6 @@ function switchTab(tab) {
     tabDoc.setAttribute("aria-pressed", String(!isSal));
   }
 
-  /* Abas sidebar (desktop) */
   const stabSal = document.getElementById("stab-salgados");
   const stabDoc = document.getElementById("stab-doces");
   if (stabSal && stabDoc) {
@@ -477,7 +476,6 @@ function openModal(id) {
   if (!p) return;
   currentProduct = p;
 
-  /* Hero */
   const iw = document.getElementById("modal-img-wrap");
   iw.innerHTML = p.img
     ? `<img class="modal-hero-img" src="${p.img}" alt="${p.name}">`
@@ -486,21 +484,21 @@ function openModal(id) {
   document.getElementById("modal-title-text").textContent = p.name;
   document.getElementById("modal-desc").textContent = p.desc;
 
-  /* Vídeo slot */
   resetVideoSlot(p.ficha.preparo.videoUrl);
 
-  /* Passos */
   document.getElementById("preparo-steps").innerHTML = p.ficha.preparo.steps
-    .map(
-      (s, i) =>
-        `<li class="step-item">
-          <span class="step-num">${i + 1}</span>
-          <span class="step-text">${s}</span>
-        </li>`,
-    )
+    .map((s, i) => {
+      const isObj = typeof s === "object" && s !== null;
+      const text = isObj ? s.text : s;
+      const iconHtml = isObj ? s.icon : "";
+      const isDestaque =
+        text.startsWith("MEIA CARGA") || text.startsWith("CARGA COMPLETA");
+      const cls = isDestaque ? " step-destaque" : "";
+      const left = isObj ? `<span class="step-icon">${iconHtml}</span>` : "";
+      return `<li class="step-item${cls}">${left}<span class="step-text">${text}</span></li>`;
+    })
     .join("");
 
-  /* Armazenamento */
   document.getElementById("storage-grid").innerHTML =
     p.ficha.armazenamento.cards
       .map(
@@ -515,7 +513,6 @@ function openModal(id) {
   document.getElementById("storage-note").textContent =
     p.ficha.armazenamento.note;
 
-  /* Ingredientes */
   document.getElementById("ingredients-list").innerHTML =
     p.ficha.ingredientes.items
       .map(
@@ -531,7 +528,6 @@ function openModal(id) {
       .map((a) => `<div class="allergen-tag">⚠️ ${a}</div>`)
       .join("");
 
-  /* Características */
   document.getElementById("chars-grid").innerHTML = p.ficha.caracteristicas
     .map(
       (c) =>
@@ -542,18 +538,15 @@ function openModal(id) {
     )
     .join("");
 
-  /* Fecha todos os boxings */
   openBoxings.clear();
   ["preparo", "armazena", "ingredientes", "caract"].forEach((k) => {
     document.getElementById("boxing-" + k).classList.remove("open");
   });
 
-  /* Abre o modal */
   document.getElementById("modal-scroll").scrollTop = 0;
   document.getElementById("modal-overlay").classList.add("open");
   document.body.style.overflow = "hidden";
 
-  /* Empurra estado na history → botão físico de voltar fecha o modal */
   history.pushState({ modal: true }, "");
 }
 
@@ -566,12 +559,9 @@ function closeModalDirect() {
   if (!overlay.classList.contains("open")) return;
   overlay.classList.remove("open");
   document.body.style.overflow = "";
-
-  /* Remove o estado da history sem navegar para fora do site */
   if (history.state && history.state.modal) history.back();
 }
 
-/* Botão físico de voltar do celular fecha o modal */
 window.addEventListener("popstate", () => {
   const overlay = document.getElementById("modal-overlay");
   if (overlay.classList.contains("open")) {
@@ -592,8 +582,6 @@ function toggleBoxing(key) {
   } else {
     el.classList.add("open");
     openBoxings.add(key);
-
-    // Aguarda a animação CSS de grid-template-rows (280ms) terminar antes de rolar
     setTimeout(() => {
       const scroll = document.getElementById("modal-scroll");
       const boxTop = el.offsetTop - scroll.offsetTop;

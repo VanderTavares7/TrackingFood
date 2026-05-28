@@ -18,16 +18,26 @@ body {
    VARIÁVEIS GLOBAIS
 ══════════════════════════════════════════ */
 :root {
-  --bg: #ede4d8;
-  --card: #fffaf4;
-  --orange: #e07820;
-  --orange-dk: #b85e10;
-  --orange-lt: #fdf0e2;
-  --brown: #5c3317;
-  --text: #3d2409;
-  --sub: #8a6545;
-  --border: #e4d5c0;
-  --shadow: rgba(92, 51, 23, 0.13);
+  /* ── Paleta Jeito Caseiro — fiel ao site oficial ── */
+  --bg: #F2F2F2;
+  /* cinza claro — fundo principal */
+  --card: #FFFFFF;
+  /* branco puro — cards */
+  --orange: #E8751A;
+  /* laranja principal da marca */
+  --orange-dk: #C4600E;
+  /* laranja escuro — hover/destaque */
+  --orange-lt: #FDF0E4;
+  /* laranja muito claro — fundos suaves */
+  --brown: #2B2018;
+  /* marrom escuro — nav/sidebar/rodapé */
+  --text: #2B2018;
+  /* marrom escuro — textos principais */
+  --sub: #6B5744;
+  /* marrom médio — textos secundários */
+  --border: #E0D8D0;
+  /* cinza quente — bordas */
+  --shadow: rgba(43, 32, 24, 0.13);
   --green: #3a7d44;
   --green-lt: #edf7f0;
   --blue: #2563a8;
@@ -47,7 +57,7 @@ body {
 ══════════════════════════════════════════ */
 body {
   font-family: "Nunito", sans-serif;
-  background: #cfc3b5;
+  background: #DCDCDC;
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -68,7 +78,7 @@ body {
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
-  background: var(--brown);
+  background: #2B2018;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -189,7 +199,7 @@ body {
   flex: 1;
   margin-left: var(--sidebar-w);
   min-height: 100vh;
-  background: var(--bg);
+  background: #F7F5F2;
   padding-bottom: 80px;
   max-width: 860px;
 }
@@ -581,7 +591,7 @@ body {
   /* altura fixa para que flex: 1 no modal-scroll funcione corretamente */
   height: 93vh;
   max-height: 93vh;
-  background: var(--bg);
+  background: #F7F5F2;
   border-radius: 28px 28px 0 0;
   display: flex;
   flex-direction: column;
@@ -764,18 +774,18 @@ body {
 }
 
 .boxing-armazena .boxing-icon {
-  background: var(--blue-lt);
-  color: var(--blue);
+  background: #F7F5F2;
+  color: #4A2A1F;
 }
 
 .boxing-ingredientes .boxing-icon {
-  background: var(--green-lt);
-  color: var(--green);
+  background: #F7F5F2;
+  color: #A65A3A;
 }
 
 .boxing-caract .boxing-icon {
-  background: var(--purple-lt);
-  color: var(--purple);
+  background: #FFF8F0;
+  color: #4A2A1F;
 }
 
 .boxing-texts {
@@ -863,13 +873,13 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: linear-gradient(135deg, #2a1505, #3d2409);
+  background: linear-gradient(135deg, #1A1008, #2B2018);
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .video-placeholder:hover {
-  background: linear-gradient(135deg, #3d1f08, #5c3317);
+  background: linear-gradient(135deg, #2B1A08, #3d2810);
 }
 
 .video-play {
@@ -919,7 +929,7 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 12.5px;
   color: var(--text);
-  background: var(--bg);
+  background: #F7F5F2;
   outline: none;
   transition: border-color 0.2s;
 }
@@ -955,32 +965,69 @@ body {
   margin-top: 14px;
 }
 
+/* Card base de cada passo */
 .step-item {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  align-items: center;
+  gap: 14px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 13px 14px;
+  transition: border-color 0.18s;
+}
+
+/* Lado esquerdo: ícone empilhado sobre número */
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .step-num {
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--orange);
-  color: #fff;
+  display: none;
+}
+
+.step-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--orange-lt);
+  color: var(--orange);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 800;
-  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .step-text {
-  font-size: 13.5px;
+  font-size: 15.5px;
   color: var(--text);
-  line-height: 1.55;
-  padding-top: 3px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Passo especial — MEIA CARGA / CARGA COMPLETA */
+.step-item.step-destaque {
+  background: var(--orange);
+  border-color: var(--orange-dk);
+}
+
+.step-item.step-destaque .step-num {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.step-item.step-destaque .step-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.step-item.step-destaque .step-text {
+  color: #fff;
+  font-weight: 700;
 }
 
 /* ── Armazenamento ── */
@@ -992,8 +1039,8 @@ body {
 }
 
 .storage-card {
-  background: var(--blue-lt);
-  border: 1px solid #c8dcf5;
+  background: #FDF0E4;
+  border: 1px solid #F0C9A0;
   border-radius: 14px;
   padding: 14px 12px;
   display: flex;
@@ -1008,7 +1055,7 @@ body {
 .storage-card-label {
   font-size: 10.5px;
   font-weight: 800;
-  color: var(--blue);
+  color: #C4600E;
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
@@ -1022,12 +1069,12 @@ body {
 
 .storage-note {
   margin-top: 12px;
-  background: #fff8e7;
-  border-left: 3px solid #f0b429;
+  background: #FDF0E4;
+  border-left: 3px solid #E8751A;
   border-radius: 0 10px 10px 0;
   padding: 10px 12px;
   font-size: 12.5px;
-  color: #7a5500;
+  color: #2B2018;
   line-height: 1.55;
 }
 
@@ -1045,8 +1092,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 9px 14px;
-  background: var(--green-lt);
-  border: 1px solid #c3e6cc;
+  background: #F7F5F2;
+  border: 1px solid #E2CDB0;
   border-radius: 12px;
 }
 
@@ -1059,7 +1106,7 @@ body {
 .ingredient-qty {
   font-size: 12.5px;
   font-weight: 800;
-  color: var(--green);
+  color: #E8751A;
 }
 
 .allergens-wrap {
@@ -1073,8 +1120,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--red-lt);
-  border: 1px solid #f5c3be;
+  background: #FDF0EE;
+  border: 1px solid #E2CDB0;
   border-radius: 10px;
   padding: 7px 12px;
   font-size: 12px;
@@ -1091,8 +1138,8 @@ body {
 }
 
 .char-card {
-  background: var(--purple-lt);
-  border: 1px solid #ddd0f5;
+  background: #F7F5F2;
+  border: 1px solid #E0D8D0;
   border-radius: 14px;
   padding: 14px 12px;
 }
@@ -1100,7 +1147,7 @@ body {
 .char-label {
   font-size: 10.5px;
   font-weight: 800;
-  color: var(--purple);
+  color: #C4600E;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   margin-bottom: 4px;
