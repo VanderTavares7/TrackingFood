@@ -375,6 +375,18 @@ const DATA = {
 };
 
 /* ═══════════════════════════════════════
+   UTILITÁRIO DE BUSCA
+   Remove acentos e normaliza para minúsculas,
+   garantindo busca 100% flexível.
+═══════════════════════════════════════ */
+function normalize(str) {
+  return str
+    .toLowerCase()
+    .normalize("NFD") // decompõe caracteres acentuados
+    .replace(/[\u0300-\u036f]/g, ""); // remove os diacríticos (acentos)
+}
+
+/* ═══════════════════════════════════════
    ESTADO
 ═══════════════════════════════════════ */
 let currentTab = "salgados";
@@ -417,20 +429,26 @@ function switchTab(tab) {
 }
 
 function filterProducts() {
-  const q = document.getElementById("search-input").value.toLowerCase().trim();
+  const q = normalize(document.getElementById("search-input").value.trim());
   const all = DATA[currentTab];
+
   if (!q) {
     document.getElementById("empty-state").style.display = "none";
     renderProducts(all);
     return;
   }
+
+  // Compara nome e descrição normalizados com o termo normalizado
   const filtered = all.filter(
-    (p) => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q),
+    (p) => normalize(p.name).includes(q) || normalize(p.desc).includes(q),
   );
+
   if (filtered.length === 0) {
     document.getElementById("products-list").innerHTML = "";
     document.getElementById("empty-state").style.display = "block";
-    document.getElementById("empty-query").textContent = q;
+    document.getElementById("empty-query").textContent = document
+      .getElementById("search-input")
+      .value.trim();
   } else {
     document.getElementById("empty-state").style.display = "none";
     renderProducts(filtered);
@@ -487,7 +505,7 @@ function openModal(id) {
   resetVideoSlot(p.ficha.preparo.videoUrl);
 
   document.getElementById("preparo-steps").innerHTML = p.ficha.preparo.steps
-    .map((s, i) => {
+    .map((s) => {
       const isObj = typeof s === "object" && s !== null;
       const text = isObj ? s.text : s;
       const iconHtml = isObj ? s.icon : "";
@@ -504,10 +522,10 @@ function openModal(id) {
       .map(
         (c) =>
           `<div class="storage-card">
-          <div class="storage-card-icon">${c.icon}</div>
-          <div class="storage-card-label">${c.label}</div>
-          <div class="storage-card-value">${c.value}</div>
-        </div>`,
+            <div class="storage-card-icon">${c.icon}</div>
+            <div class="storage-card-label">${c.label}</div>
+            <div class="storage-card-value">${c.value}</div>
+          </div>`,
       )
       .join("");
   document.getElementById("storage-note").textContent =
@@ -518,9 +536,9 @@ function openModal(id) {
       .map(
         (item) =>
           `<li class="ingredient-item">
-          <span class="ingredient-name">${item.name}</span>
-          <span class="ingredient-qty">${item.qty}</span>
-        </li>`,
+            <span class="ingredient-name">${item.name}</span>
+            <span class="ingredient-qty">${item.qty}</span>
+          </li>`,
       )
       .join("");
   document.getElementById("allergens-wrap").innerHTML =
